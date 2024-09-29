@@ -1,70 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>JSON Leaderboard</title>
-<style>
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  table, th, td {
-    border: 1px solid black;
-  }
-  th, td {
-    padding: 10px;
-    text-align: left;
-  }
-</style>
+    <meta charset="UTF-8">
+    <title>Read JSON on GitHub Pages</title>
 </head>
 <body>
- 
-<div id="leaderboard">
-  <table>
-    <thead>
-      <tr>
-        <th>Rank</th>
-        <th>Name</th>
-        <th>Score</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- JSON data will be inserted here -->
-    </tbody>
-  </table>
-</div>
- 
-<script>
-// �����JSON����
-var jsonData = [
-  {"name":"Alice","score":85},
-  {"name":"Bob","score":90},
-  {"name":"Charlie","score":88}
-];
- 
-// ��JSON����ת��ΪHTML�����
-function renderLeaderboard(data) {
-  var table = document.querySelector("#leaderboard table tbody");
-  table.innerHTML = ''; // ���֮ǰ������
-  
-  data.sort(function(a, b) {
-    return b.score - a.score; // ���ݷ�����������
-  });
-  
-  data.forEach(function(item, index) {
-    var rank = index + 1;
-    var row = `<tr>
-                  <td>${rank}</td>
-                  <td>${item.name}</td>
-                  <td>${item.score}</td>
-              </tr>`;
-    table.insertAdjacentHTML('beforeend', row);
-  });
-}
- 
-// ��Ⱦ���а�
-renderLeaderboard(jsonData);
-</script>
- 
+    <script>
+        fetch('data.json')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data); // 这里的data就是JSON文件解析后的对象
+                // 接下来你可以根据需要处理这些数据
+            })
+            .catch(error => console.error('Error fetching JSON:', error));
+    </script>
 </body>
 </html>
