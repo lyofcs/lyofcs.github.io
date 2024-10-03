@@ -1,24 +1,140 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Read JSON on GitHub Pages</title>
-</head>
-<body>
-    <script>
-        fetch('data.json')
-            .then(response => response.json())
-            .then(data => {
-                console.log(data); // 这里的data就是JSON文件解析后的对象
-                // 接下来你可以根据需要处理这些数据
-            })
-            .catch(error => console.error('Error fetching JSON:', error));
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Leaderboard</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css"
+    />
+    <script
+      async
+      src="https://platform-api.sharethis.com/js/sharethis.js#property=5ef16088a922da001296fb5c&product=sticky-share-buttons"
+    ></script>
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
+    ></script>
+  </head>
+  <body>
+    <div id="app">
+      <div class="hero is-bold is-dark">
+        <div class="hero-body">
+          <div class="container">
+            <h1 class="title">
+              HNG
+            </h1>
+            <h2 class="subtitle">
+              Leaderboard
+            </h2>
 
-        function openPopup() {
-          alert("这是一个弹出窗口！");
-        }
-    </script>
-
-    <button onclick="openPopup()">点击弹出窗口</button>
-</body>
+            <div class="level-right">
+              <div class="level-item">
+                <div class="field">
+                  <p class="control has-icons-left has-icons-right">
+                    <input
+                      class="input"
+                      type="email"
+                      placeholder="Filter by Score"
+                      v-model="search"
+                    />
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-filter"></i>
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 20px;"></div>
+      <div class="container mt-6">
+        <div class="columns">
+          <div class="box column mr-4">
+            <article class="media">
+              <div class="media-left">
+                <figure class="image is-64x64">
+                  <img src="./img/first.png" alt="Image" />
+                </figure>
+              </div>
+              <div class="media-content">
+                <div class="content">
+                  <p>
+                    <strong>{{sort(interns)[0].full_name}}</strong>
+                    <br />
+                    <small>@{{sort(interns)[0].slack_name}}</small>
+                    <br />
+                    <small>1st position</small>
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="box column">
+            <article class="media">
+              <div class="media-left">
+                <figure class="image is-64x64">
+                  <img src="./img/second.png" alt="Image" />
+                </figure>
+              </div>
+              <div class="media-content">
+                <div class="content">
+                  <p>
+                    <strong>{{sort(interns)[1].full_name}}</strong>
+                    <br />
+                    <small>@{{sort(interns)[1].slack_name}}</small>
+                    <br />
+                    <small>2nd Position</small>
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="box column">
+            <article class="media">
+              <div class="media-left">
+                <figure class="image is-64x64">
+                  <img src="./img/third.png" alt="Image" />
+                </figure>
+              </div>
+              <div class="media-content">
+                <div class="content">
+                  <p>
+                    <strong>{{sort(interns)[2].full_name}}</strong>
+                    <br />
+                    <small>@{{sort(interns)[2].slack_name}}</small>
+                    <br />
+                    <small>3rd Position</small>
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+        <table class="table is-fullwidth is-hoverable">
+          <thead>
+            <tr>
+              <th>Full Name</th>
+              <th>Slack Name</th>
+              <th>Email</th>
+              <th>Score</th>
+            </tr>
+          </thead>
+          <tbody v-for="intern in sort(filteredItems)" :key="intern.id">
+            <tr>
+              <td>{{intern.full_name}}</td>
+              <td>{{intern.slack_name}}</td>
+              <td>{{intern.email}}</td>
+              <td>{{intern.score}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+  <script src="vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="main.js"></script>
 </html>
