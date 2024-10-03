@@ -1,20 +1,24 @@
 const rankingsBody = document.querySelector("#rankings > tbody");
 
 function loadRankings() {
-    fetch('data.json')
-        .then(response => response.json())
-        .then(data => {
-            // 在这里使用JSON数据
-            console.log(data);
-        })
-        .catch(error => {
-            console.error('读取JSON文件时出错：', error);
-        });
+    const request = new XMLHttpRequest();
+
+    request.open("get", "https://codepen.io/imisterk/pen/MLgwOa.js");
+    request.onload = () => {
+        try {
+            const json = JSON.parse(request.responseText);
+            populateRankings(json);
+        } catch (e) {
+            console.warn("Could not load Player Rankings! :(");
+        }
+    };
+
+    request.send();
 }
 
-function populateRankings(data) {
+function populateRankings(json) {
     // Populate Leaderboard
-    data.forEach((row) => {
+    json.forEach((row) => {
         const tr = document.createElement("tr");
 
         row.forEach((cell) => {
