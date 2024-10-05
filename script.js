@@ -7,7 +7,15 @@ var leaderboardData = [
     { "name": "ZZZZ", "score": 7000, "id": "TFA1201" }
 ];
 
-var data;
+var data = {
+    "members": [
+        { "name": "Alice", "score": 10000, "id": "TFA1001" },
+        { "name": "Bob", "score": 9000, "id": "TFA1021" },
+        { "name": "Charlie", "score": 8000, "id": "TFA1101" },
+        { "name": "ZZZZ", "score": 7000, "id": "TFA1201" }
+    ]
+}
+];
 var table = document.querySelector('#rankings > tbody');
 
 fetch('data.json')
@@ -20,7 +28,7 @@ fetch('data.json')
     .then(jsonData => {
         console.log(jsonData); // 这里你可以处理你的JSON数据
         // 例如，你可以将其显示在网页上
-        data = jsonData;
+        //data = jsonData;
         //document.body.innerHTML = JSON.stringify(jsonData, null, 2);
         //jsonData.members.forEach(item =)
     })
