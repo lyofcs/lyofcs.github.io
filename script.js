@@ -15,6 +15,7 @@ var data = {
         { "name": "ZZZZ", "score": 7000, "id": "TFA1201" }
     ]
 };
+
 var table = document.querySelector('#rankings > tbody');
 
 fetch('data.json')
@@ -27,8 +28,7 @@ fetch('data.json')
     .then(jsonData => {
         console.log(jsonData); // 这里你可以处理你的JSON数据
         // 例如，你可以将其显示在网页上
-        data = jsonData;
-        console.log(data);
+        //data = jsonData;
         //document.body.innerHTML = JSON.stringify(jsonData, null, 2);
         //jsonData.members.forEach(item =)
     })
@@ -41,6 +41,7 @@ fetch('data.json')
 
 // 遍历JSON数据并添加到表格中
 data.members.forEach(function (player, index) {
+    console.log(data);
     var row = table.insertRow(-1); // 在表格末尾添加新行
     var cell1 = row.insertCell(0); // 当前名次
     var cell2 = row.insertCell(1); // 选手ID
