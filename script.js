@@ -9,9 +9,12 @@ var leaderboardData = [
 
 fetch('data.json')
     .then(response => response.json())
-    .then(data => {
-        // 在这里使用JSON数据
-        console.log(data);
+    .then(const data => {
+    // 在这里使用JSON数据
+    let datajson = JSON.parse(data);
+    console.log(data.members[0].tfaName);
+    console.log(datajson.members[1].tfaName);
+    console.log(data);
     })
     .catch(error => {
         console.error('读取JSON文件时出错：', error);
@@ -21,7 +24,7 @@ fetch('data.json')
 var table = document.querySelector('#rankings > tbody');
 
 // 遍历JSON数据并添加到表格中
-data.forEach(function (player, index) {
+datajson.forEach(function (player, index) {
     var row = table.insertRow(-1); // 在表格末尾添加新行
     var cell1 = row.insertCell(0); // 名次
     var cell2 = row.insertCell(1); // 姓名
