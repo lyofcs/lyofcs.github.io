@@ -112,7 +112,15 @@ input[type=text], textarea, input[type=email], input[type=password], input[type=
     }
 
         .leaderboard-results tbody tr:first-child {
-            color: #686EF9;
+            color: #CD7F32;
+        }
+
+        .leaderboard-results tbody tr:nth-child(2) {
+            color: #E6E8FA;
+        }
+
+        .leaderboard-results tbody tr:nth-child(3) {
+            color: #8C7853;
         }
 
     .leaderboard-results tbody span {
