@@ -14,8 +14,7 @@ var data = {
         { "name": "Charlie", "score": 8000, "id": "TFA1101" },
         { "name": "ZZZZ", "score": 7000, "id": "TFA1201" }
     ]
-}
-];
+};
 var table = document.querySelector('#rankings > tbody');
 
 fetch('data.json')
