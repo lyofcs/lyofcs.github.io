@@ -7,26 +7,29 @@ var leaderboardData = [
     { "name": "ZZZZ", "score": 7000, "id": "TFA1201" }
 ];
 
-var datajson;
+var jsonData;
 
 fetch('data.json')
-    .then(response => response.json())
-    .then(data => {
-    // 在这里使用JSON数据
-    datajson = JSON.parse(data.members);
-    console.log(data.members[0].tfaName);
-    console.log(datajson[1].tfaName);
-    console.log(data);
+    .then(response => {
+        if (response.ok) {
+            return response.json(); // 将响应转换为JSON
+        }
+        throw new Error('Network response was not ok.');
+    })
+    .then(jsonData => {
+        console.log(jsonData); // 这里你可以处理你的JSON数据
+        // 例如，你可以将其显示在网页上
+        document.body.innerHTML = JSON.stringify(jsonData, null, 2);
     })
     .catch(error => {
-        console.error('读取JSON文件时出错：', error);
+        console.error('There has been a problem with your fetch operation:', error);
     });
 
 // 获取table元素
 var table = document.querySelector('#rankings > tbody');
 
 // 遍历JSON数据并添加到表格中
-datajson.forEach(function (player, index) {
+jsonData.forEach(function (player, index) {
     var row = table.insertRow(-1); // 在表格末尾添加新行
     var cell1 = row.insertCell(0); // 当前名次
     var cell2 = row.insertCell(1); // 选手ID
