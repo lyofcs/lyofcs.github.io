@@ -7,13 +7,15 @@ var leaderboardData = [
     { "name": "ZZZZ", "score": 7000, "id": "TFA1201" }
 ];
 
+var datajson;
+
 fetch('data.json')
     .then(response => response.json())
-    .then(const data => {
+    .then(data => {
     // 在这里使用JSON数据
-    let datajson = JSON.parse(data);
+    datajson = JSON.parse(data.members);
     console.log(data.members[0].tfaName);
-    console.log(datajson.members[1].tfaName);
+    console.log(datajson[1].tfaName);
     console.log(data);
     })
     .catch(error => {
@@ -26,14 +28,16 @@ var table = document.querySelector('#rankings > tbody');
 // 遍历JSON数据并添加到表格中
 datajson.forEach(function (player, index) {
     var row = table.insertRow(-1); // 在表格末尾添加新行
-    var cell1 = row.insertCell(0); // 名次
-    var cell2 = row.insertCell(1); // 姓名
-    var cell3 = row.insertCell(2); // 分数
-    var cell4 = row.insertCell(3); // 分数
+    var cell1 = row.insertCell(0); // 当前名次
+    var cell2 = row.insertCell(1); // 选手ID
+    var cell3 = row.insertCell(2); // 选手积分
+    var cell4 = row.insertCell(3); // 天格会ID
+    var cell5 = row.insertCell(4); //首次赛事
     cell1.textContent = index + 1;
-    cell2.textContent = player.name;
-    cell3.textContent = player.score;
-    cell4.textContent = player.id;
+    cell2.textContent = player.tfaName;
+    cell3.textContent = player.currentMMR;
+    cell4.textContent = player.tfaIndex;
+    cell5.textContent = player.firstTour;
 });
 
 
