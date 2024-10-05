@@ -31,6 +31,21 @@ fetch('data.json')
         //data = jsonData;
         //document.body.innerHTML = JSON.stringify(jsonData, null, 2);
         //jsonData.members.forEach(item =)
+        jsonData.members.forEach(function (player, index) {
+            console.log(jsonData);
+            var row = table.insertRow(-1); // 在表格末尾添加新行
+            var cell1 = row.insertCell(0); // 当前名次
+            var cell2 = row.insertCell(1); // 选手ID
+            var cell3 = row.insertCell(2); // 选手积分
+            var cell4 = row.insertCell(3); // 天格会ID
+            var cell5 = row.insertCell(4); //首次赛事
+            cell1.textContent = index + 1;
+            cell2.textContent = player.tfaName;
+            cell3.textContent = player.currentMMR;
+            cell4.textContent = player.tfaIndex;
+            cell5.textContent = player.firstTour;
+        });
+
     })
     .catch(error => {
         console.error('There has been a problem with your fetch operation:', error);
@@ -40,20 +55,6 @@ fetch('data.json')
 
 
 // 遍历JSON数据并添加到表格中
-data.members.forEach(function (player, index) {
-    console.log(data);
-    var row = table.insertRow(-1); // 在表格末尾添加新行
-    var cell1 = row.insertCell(0); // 当前名次
-    var cell2 = row.insertCell(1); // 选手ID
-    var cell3 = row.insertCell(2); // 选手积分
-    var cell4 = row.insertCell(3); // 天格会ID
-    var cell5 = row.insertCell(4); //首次赛事
-    cell1.textContent = index + 1;
-    cell2.textContent = player.tfaName;
-    cell3.textContent = player.currentMMR;
-    cell4.textContent = player.tfaIndex;
-    cell5.textContent = player.firstTour;
-});
 
 
 /*function loadRankings() {
