@@ -27,7 +27,8 @@ fetch('data.json')
     .then(jsonData => {
         console.log(jsonData); // 这里你可以处理你的JSON数据
         // 例如，你可以将其显示在网页上
-        //data = jsonData;
+        data = jsonData;
+        console.log(data);
         //document.body.innerHTML = JSON.stringify(jsonData, null, 2);
         //jsonData.members.forEach(item =)
     })
