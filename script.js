@@ -12,30 +12,30 @@ var jsonData;
 fetch('data.json')
     .then(response => {
         if (response.ok) {
-            return response.json(); // ½«ÏìÓ¦×ª»»ÎªJSON
+            return response.json(); // å°†å“åº”è½¬æ¢ä¸ºJSON
         }
         throw new Error('Network response was not ok.');
     })
     .then(jsonData => {
-        console.log(jsonData); // ÕâÀïÄã¿ÉÒÔ´¦ÀíÄãµÄJSONÊı¾İ
-        // ÀıÈç£¬Äã¿ÉÒÔ½«ÆäÏÔÊ¾ÔÚÍøÒ³ÉÏ
-        document.body.innerHTML = JSON.stringify(jsonData, null, 2);
+        console.log(jsonData); // è¿™é‡Œä½ å¯ä»¥å¤„ç†ä½ çš„JSONæ•°æ®
+        // ä¾‹å¦‚ï¼Œä½ å¯ä»¥å°†å…¶æ˜¾ç¤ºåœ¨ç½‘é¡µä¸Š
+        //document.body.innerHTML = JSON.stringify(jsonData, null, 2);
     })
     .catch(error => {
         console.error('There has been a problem with your fetch operation:', error);
     });
 
-// »ñÈ¡tableÔªËØ
+// è·å–tableå…ƒç´ 
 var table = document.querySelector('#rankings > tbody');
 
-// ±éÀúJSONÊı¾İ²¢Ìí¼Óµ½±í¸ñÖĞ
-jsonData.forEach(function (player, index) {
-    var row = table.insertRow(-1); // ÔÚ±í¸ñÄ©Î²Ìí¼ÓĞÂĞĞ
-    var cell1 = row.insertCell(0); // µ±Ç°Ãû´Î
-    var cell2 = row.insertCell(1); // Ñ¡ÊÖID
-    var cell3 = row.insertCell(2); // Ñ¡ÊÖ»ı·Ö
-    var cell4 = row.insertCell(3); // Ìì¸ñ»áID
-    var cell5 = row.insertCell(4); //Ê×´ÎÈüÊÂ
+// éå†JSONæ•°æ®å¹¶æ·»åŠ åˆ°è¡¨æ ¼ä¸­
+jsonData.members.forEach(function (player, index) {
+    var row = table.insertRow(-1); // åœ¨è¡¨æ ¼æœ«å°¾æ·»åŠ æ–°è¡Œ
+    var cell1 = row.insertCell(0); // å½“å‰åæ¬¡
+    var cell2 = row.insertCell(1); // é€‰æ‰‹ID
+    var cell3 = row.insertCell(2); // é€‰æ‰‹ç§¯åˆ†
+    var cell4 = row.insertCell(3); // å¤©æ ¼ä¼šID
+    var cell5 = row.insertCell(4); //é¦–æ¬¡èµ›äº‹
     cell1.textContent = index + 1;
     cell2.textContent = player.tfaName;
     cell3.textContent = player.currentMMR;
