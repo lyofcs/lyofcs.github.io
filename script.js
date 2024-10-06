@@ -32,7 +32,6 @@ fetch('data.json')
         //document.body.innerHTML = JSON.stringify(jsonData, null, 2);
         //jsonData.members.forEach(item =)
         jsonData.members.forEach(function (player, index) {
-            console.log(jsonData);
             var row = table.insertRow(-1); // 在表格末尾添加新行
             var cell1 = row.insertCell(0); // 当前名次
             var cell2 = row.insertCell(1); // 选手ID
@@ -91,14 +90,14 @@ function populateRankings(json) {
 document.addEventListener("DOMContentLoaded", () => { loadRankings(); });*/
 
 $("#search-leaderboard").keyup(function () {
-    var value = this.value;
+    var value = this.value.toLowerCase();
 
     $("table").find("tr").each(function (index) {
         if (index === 0) return;
 
         var if_td_has = false;
         $(this).find('td').each(function () {
-            if_td_has = if_td_has || $(this).text().indexOf(value) !== -1; 
+            if_td_has = if_td_has || $(this).text().toLowerCase().indexOf(value) !== -1; 
         });
 
         $(this).toggle(if_td_has);
