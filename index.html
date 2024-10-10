@@ -8,6 +8,8 @@
         <link rel="stylesheet" href="./style.css">
     </head>
     <body>
+
+        <a href="details.html">Details</a>
         <!-- ҳ������ -->
         <section id="leaderboard">
             <nav class="ladder-nav">
@@ -33,27 +35,8 @@
                 </tbody>
             </table>
         </section>
-        <!-- �����ⲿJavaScript�ļ� -->
         <script src="jquery-3.7.1.min.js"></script>
         <script src="script.js"></script>
-
-
-        <!--<script>
-            fetch('data.json')
-                .then(response => response.json())
-                .then(data => {
-                    let table = document.querySelector('#rankings table');
-                    data.forEach((player, index) => {
-                        let rank = index + 1;
-                        let row = `<tr>
-                                                <td>${rank}</td>
-                                                <td>${player.name}</td>
-                                                <td>${player.score}</td>
-                                            </tr>`;
-                        // table.insertAdjacentHTML('beforeend', row);
-                    });
-                });
-        </script>-->
 
     </body>
 </html>

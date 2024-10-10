@@ -1,0 +1,57 @@
+<table id="data-table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>City</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- 数据将被动态插入到此处 -->
+    </tbody>
+</table>
+<button id="switch-data">Switch Data</button>
+
+
+<script>
+    var jsonData1 = [
+        { "name": "Alice", "age": 25, "city": "New York" },
+        { "name": "Bob", "age": 30, "city": "San Francisco" }
+    ];
+
+    var jsonData2 = [
+        { "name": "Charlie", "age": 22, "city": "Los Angeles" },
+        { "name": "David", "age": 35, "city": "Chicago" }
+    ];
+
+    var currentData = jsonData1;
+
+    document.getElementById('switch-data').addEventListener('click', function () {
+        if (currentData === jsonData1) {
+            currentData = jsonData2;
+        } else {
+            currentData = jsonData1;
+        }
+        updateTable(currentData);
+    });
+
+    function updateTable(data) {
+        var tbody = document.querySelector('#data-table tbody');
+        tbody.innerHTML = ''; // Clear previous data
+
+        data.forEach(function (item) {
+            var tr = document.createElement('tr');
+            Object.keys(item).forEach(function (key) {
+                var td = document.createElement('td');
+                td.textContent = item[key];
+                tr.appendChild(td);
+            });
+            tbody.appendChild(tr);
+        });
+    }
+
+    updateTable(currentData); // Initial load
+
+</script>
+
+<script src="detailshow.js"></script>

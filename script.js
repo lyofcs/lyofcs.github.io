@@ -21,23 +21,23 @@ var table = document.querySelector('#rankings > tbody');
 fetch('data.json')
     .then(response => {
         if (response.ok) {
-            return response.json(); // å°†å“åº”è½¬æ¢ä¸ºJSON
+            return response.json(); // ½«ÏìÓ¦×ª»»ÎªJSON
         }
         throw new Error('Network response was not ok.');
     })
     .then(jsonData => {
-        console.log(jsonData); // è¿™é‡Œä½ å¯ä»¥å¤„ç†ä½ çš„JSONæ•°æ®
-        // ä¾‹å¦‚ï¼Œä½ å¯ä»¥å°†å…¶æ˜¾ç¤ºåœ¨ç½‘é¡µä¸Š
+        console.log(jsonData); // ÕâÀïÄã¿ÉÒÔ´¦ÀíÄãµÄJSONÊı¾İ
+        // ÀıÈç£¬Äã¿ÉÒÔ½«ÆäÏÔÊ¾ÔÚÍøÒ³ÉÏ
         //data = jsonData;
         //document.body.innerHTML = JSON.stringify(jsonData, null, 2);
         //jsonData.members.forEach(item =)
         jsonData.members.forEach(function (player, index) {
-            var row = table.insertRow(-1); // åœ¨è¡¨æ ¼æœ«å°¾æ·»åŠ æ–°è¡Œ
-            var cell1 = row.insertCell(0); // å½“å‰åæ¬¡
-            var cell2 = row.insertCell(1); // é€‰æ‰‹ID
-            var cell3 = row.insertCell(2); // é€‰æ‰‹ç§¯åˆ†
-            var cell4 = row.insertCell(3); // å¤©æ ¼ä¼šID
-            var cell5 = row.insertCell(4); //é¦–æ¬¡èµ›äº‹
+            var row = table.insertRow(-1); // ÔÚ±í¸ñÄ©Î²Ìí¼ÓĞÂĞĞ
+            var cell1 = row.insertCell(0); // µ±Ç°Ãû´Î
+            var cell2 = row.insertCell(1); // Ñ¡ÊÖID
+            var cell3 = row.insertCell(2); // Ñ¡ÊÖ»ı·Ö
+            var cell4 = row.insertCell(3); // Ìì¸ñ»áID
+            var cell5 = row.insertCell(4); //Ê×´ÎÈüÊÂ
             cell1.textContent = index + 1;
             cell2.textContent = player.tfaName;
             cell3.textContent = player.currentMMR;
@@ -52,13 +52,13 @@ fetch('data.json')
 
 
 document.getElementById('rankings').addEventListener('click', function (e) {
-    var target = e.target; // è·å–äº‹ä»¶è§¦å‘çš„å…ƒç´ 
-    if (target.tagName === 'TD') { // ç¡®ä¿ç‚¹å‡»çš„æ˜¯å•å…ƒæ ¼
-        //var id = target.getAttribute('data-id'); // è·å–ID
+    var target = e.target; // »ñÈ¡ÊÂ¼ş´¥·¢µÄÔªËØ
+    if (target.tagName === 'TD') { // È·±£µã»÷µÄÊÇµ¥Ôª¸ñ
+        //var id = target.getAttribute('data-id'); // »ñÈ¡ID
         var rank = target.parentNode.cells[0].textContent;
-        var url = 'http://yourpage.com?rank=' + encodeURIComponent(rank); // æ„é€ æ–°çš„URL
+        var url = 'details.html?rank=' + encodeURIComponent(rank); // ¹¹ÔìĞÂµÄURL
         console.log(url); 
-        window.location.href = url; // è·³è½¬é¡µé¢
+        window.location.href = url; // Ìø×ªÒ³Ãæ
     }
 });
 
