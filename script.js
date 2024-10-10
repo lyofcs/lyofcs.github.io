@@ -50,44 +50,17 @@ fetch('data.json')
         console.error('There has been a problem with your fetch operation:', error);
     });
 
-// 获取table元素
 
-
-// 遍历JSON数据并添加到表格中
-
-
-/*function loadRankings() {
-    const request = new XMLHttpRequest();
-
-    request.open("get", "https://codepen.io/imisterk/pen/MLgwOa.js");
-    request.onload = () => {
-        try {
-            const json = JSON.parse(request.responseText);
-            populateRankings(json);
-        } catch (e) {
-            console.warn("Could not load Player Rankings! :(");
-        }
-    };
-
-    request.send();
-}
-
-function populateRankings(json) {
-    // Populate Leaderboard
-    json.forEach((row) => {
-        const tr = document.createElement("tr");
-
-        row.forEach((cell) => {
-            const td = document.createElement("td");
-            td.textContent = cell;
-            tr.appendChild(td);
-        });
-
-        rankingsBody.appendChild(tr);
-    });
-}
-
-document.addEventListener("DOMContentLoaded", () => { loadRankings(); });*/
+document.getElementById('rankings').addEventListener('click', function (e) {
+    var target = e.target; // 获取事件触发的元素
+    if (target.tagName === 'TD') { // 确保点击的是单元格
+        //var id = target.getAttribute('data-id'); // 获取ID
+        var rank = target.parentNode.cells[0].textContent;
+        var url = 'http://yourpage.com?rank=' + encodeURIComponent(rank); // 构造新的URL
+        console.log(url); 
+        window.location.href = url; // 跳转页面
+    }
+});
 
 $("#search-leaderboard").keyup(function () {
     var value = this.value.toLowerCase();
