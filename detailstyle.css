@@ -1,0 +1,159 @@
+.player-profile-page {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.panel {
+    border-radius: 15px;
+    background-color: #6d6161;
+}
+
+.player-info {
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    color: white;
+    text-shadow: 2px 3px 2px #161414;
+    background-image: url(https://perch.roberts.edu/wp-content/uploads/2015/10/Soccer-Field-Night1.jpg);
+    background-position: center;
+    border: 1px solid transparent;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    padding-left: 50px;
+    padding-bottom: 10px;
+}
+
+.profile-info--input {
+    margin-top: 0;
+}
+
+.player-profile-record {
+    color: #ecfb01;
+}
+
+.player-stats {
+    font-family: 'Montserrat', sans-serif;
+    background: #181717;
+    padding-bottom: 0px;
+}
+
+span {
+    color: #9f9696;
+    font-size: 11px;
+}
+
+.game-result {
+    display: inline-block;
+    border-right: 3px solid black;
+    padding: 0px 13px;
+}
+
+    .game-result:nth-of-type(3) {
+        border: none;
+    }
+
+h1 {
+    font-size: 50px;
+}
+
+.table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+    background: white;
+}
+
+.player-current-season {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 10px 0px;
+}
+
+.season-schedule {
+    padding-left: 0;
+    text-align: center;
+    padding-right: 5px;
+}
+
+.scheduled-game {
+    font-size: 14px;
+    padding: 0 8px;
+}
+
+.wells-container {
+    padding-right: 0px;
+}
+
+.well {
+    border-radius: 0px;
+    text-transform: uppercase;
+    text-align: center;
+    text-shadow: 2px 3px 2px #161414;
+    padding-bottom: 37px;
+}
+
+    .well h1 {
+        font-size: 40px;
+        color: #ecfb01;
+    }
+
+.side-panels {
+    padding-right: 0px;
+}
+
+.season-standings {
+    text-shadow: 0px 1px 2px #acacac;
+    font-size: 12px;
+    color: #8e8484;
+}
+
+th {
+    text-align: center;
+}
+
+.player-game-data {
+    font-family: 'Montserrat', sans-serif;
+    padding-top: 25px;
+    background-image: url(https://perch.roberts.edu/wp-content/uploads/2015/10/Soccer-Field-Night1.jpg);
+    background-position: center;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.overall-record {
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+    .overall-record h3 {
+        color: #ecfb01;
+        font-size: 40px;
+        text-shadow: 2px 3px 2px #161414;
+    }
+
+.career-record:nth-of-type(3) {
+}
+
+.career-stat-heading {
+    font-size: 15px;
+    text-shadow: 2px 3px 2px #161414;
+    color: white;
+}
+
+.career-record-stats {
+    border-right: 2px solid #fffafa;
+}
+
+.career-win-percentage {
+    padding-bottom: 25px;
+}
+
+.career-match-result {
+    font-size: 15px;
+    padding-right: 15px;
+    text-transform: uppercase;
+    color: white;
+}
+
+.player-info-heading {
+    padding-bottom: 10px;
+}
