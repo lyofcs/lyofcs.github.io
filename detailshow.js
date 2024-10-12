@@ -5,4 +5,10 @@ function getQueryParam(param) {
 
 var rank = getQueryParam('rank'); // 获取rank参数
 
+console.log(data.members[rank].tfaName);
+
+console.log(data.members[rank].historyMMR);
+
 console.log(rank);
+
+//var tourTable = document.querySelector('#rankings > tbody');
