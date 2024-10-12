@@ -16,7 +16,7 @@ var data = {
     ]
 };*/
 
-var data;
+//var globalData;
 
 var table = document.querySelector('#rankings > tbody');
 
@@ -33,8 +33,9 @@ fetch('data.json')
         //data = jsonData;
         //document.body.innerHTML = JSON.stringify(jsonData, null, 2);
         //jsonData.members.forEach(item =)
-        data = jsonData;
-        console.log(data);
+        //globalData = jsonData;
+        //console.log(globalData);
+        localStorage.setItem("json", jsonData);
         jsonData.members.forEach(function (player, index) {
             var row = table.insertRow(-1); // 在表格末尾添加新行
             var cell1 = row.insertCell(0); // 当前名次
