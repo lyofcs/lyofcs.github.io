@@ -4,7 +4,9 @@ function getQueryParam(param) {
 }
 
 var rank = getQueryParam('rank'); // 获取rank参数
-var jsonData = localStorage.getItem("json")
+var jsonData = localStorage.getItem("json");
+
+console.log(jsonData);
 
 console.log(jsonData.members[rank].tfaName);
 console.log(jsonData.members[rank].historyMMR);
