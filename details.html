@@ -1,20 +1,26 @@
 <head>
-    
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700" rel="stylesheet">
+    <link rel="stylesheet" href="./bootstrap.min.css">
     <link href="./detailstyle.css" rel="stylesheet">
-    <!--<link href="https://fonts.googleapis.com/css?family=Montserrat:700" rel="stylesheet">-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
         google.charts.load("current", { packages: ["corechart"] });
         google.charts.setOnLoadCallback(drawChart);
         function drawChart() {
-            var data = google.visualization.arrayToDataTable([
+            var chartData = google.visualization.arrayToDataTable([
                 ['Task', 'Total Record'],
+                ['Win', 100],
+                ['Draw', 30],
+                ['Loss', 27],
+                ['Win', 100],
+                ['Draw', 30],
+                ['Loss', 27],
                 ['Win', 100],
                 ['Draw', 30],
                 ['Loss', 27]
             ]);
 
-            var options = {
+            /*var options = {
                 pieHole: 0.4,
                 legend: 'none',
                 backgroundColor: 'none',
@@ -27,10 +33,21 @@
                     1: { color: '#777872' },
                     2: { color: '#cc5a5d' }
                 }
+            };*/
+            var options = {
+                title: 'Company Performance',
+                hAxis: { title: 'Year', titleTextStyle: { color: 'red' } },
+                vAxis: { title: 'Performance', titleTextStyle: { color: 'red' } },
+                tooltip: {
+                    text: 'X: %{x}, Y: %{y}',
+                    trigger: 'both',
+                    isHtml: true
+                }
+
             };
 
-            var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-            chart.draw(data, options);
+            var chart = new google.visualization.LineChart(document.getElementById('donutchart'));
+            chart.draw(chartData, options);
         }
     </script>
 </head>
@@ -41,19 +58,17 @@
             <div class="panel-body player-info">
                 <div class="row player-info-heading">
                     <div class="col-md-8 player-profile-gamertag">
-                        <h1>GOLD3NLEG</h1>
+                        <h1>*选手的ID</h1>
                     </div>
                     <div class="col-md-4 player-profile-record">
-                        <h1 class="game-result">15</h1>
-                        <h1 class="game-result">3</h1>
-                        <h1 class="game-result">4</h1>
+                        <h1 class="game-result">*#1800</h1>
                     </div>
                 </div>
                 <div class="row player-info-inputs">
                     <div class="col-md-3">
                         <div class="profile-info nationality">
-                            <span>Nationaity</span>
-                            <h3 class="profile-info--input">USA</h3>
+                            <span>天格会编号</span>
+                            <h3 class="profile-info--input">*TFA1001</h3>
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -128,17 +143,32 @@
                                     <td><span class="scheduled-game">xShake JuntXx</span> VS <span class="scheduled-game">GOLD3NLEG</span></td>
                                     <td>N/A</td>
                                 </tr>
+                                <tr>
+                                    <td>6/30</td>
+                                    <td><span class="scheduled-game">xShake JuntXx</span> VS <span class="scheduled-game">GOLD3NLEG</span></td>
+                                    <td>N/A</td>
+                                </tr>
+                                <tr>
+                                    <td>6/30</td>
+                                    <td><span class="scheduled-game">xShake JuntXx</span> VS <span class="scheduled-game">GOLD3NLEG</span></td>
+                                    <td>N/A</td>
+                                </tr>
+                                <tr>
+                                    <td>6/30</td>
+                                    <td><span class="scheduled-game">xShake JuntXx</span> VS <span class="scheduled-game">GOLD3NLEG</span></td>
+                                    <td>N/A</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
                     <div class="col-md-4 wells-container">
                         <div class="well well-lg">
-                            <span class="season-standings current-division">Division</span>
-                            <h1>Premier</h1>
+                            <span class="season-standings current-division">当前积分</span>
+                            <h1>#1111</h1>
                         </div>
                         <div class="well well-lg">
-                            <span class="season-standings current-rank">Rank</span>
-                            <h1>1st</h1>
+                            <span class="season-standings current-rank">当前排名</span>
+                            <h1>#1st</h1>
                         </div>
                     </div>
                 </div>

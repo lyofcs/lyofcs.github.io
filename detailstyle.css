@@ -1,3 +1,6 @@
+@import bootsrap.css;
+
+
 .player-profile-page {
     max-width: 850px;
     margin: 0 auto;
@@ -58,20 +61,27 @@ h1 {
 .table {
     width: 100%;
     max-width: 100%;
+    height: 500px;
     margin-bottom: 20px;
     background: white;
+
 }
 
 .player-current-season {
     max-width: 800px;
     margin: 0 auto;
     padding: 10px 0px;
+
 }
 
 .season-schedule {
     padding-left: 0;
     text-align: center;
     padding-right: 5px;
+    height: 350px;
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .scheduled-game {
@@ -96,6 +106,10 @@ h1 {
         color: #ecfb01;
     }
 
+    .well span{
+        font-size: 20px;
+    }
+
 .side-panels {
     padding-right: 0px;
 }
@@ -110,6 +124,7 @@ th {
     text-align: center;
 }
 
+/*最下边玩家数据区域*/
 .player-game-data {
     font-family: 'Montserrat', sans-serif;
     padding-top: 25px;
@@ -133,6 +148,8 @@ th {
 .career-record:nth-of-type(3) {
 }
 
+
+/*右下角胜率和生涯排名部分*/
 .career-stat-heading {
     font-size: 15px;
     text-shadow: 2px 3px 2px #161414;
@@ -154,6 +171,8 @@ th {
     color: white;
 }
 
+
+/*最上方的姓名部分*/
 .player-info-heading {
     padding-bottom: 10px;
 }
