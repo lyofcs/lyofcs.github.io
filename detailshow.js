@@ -3,7 +3,7 @@ function getQueryParam(param) {
     return searchParams.get(param);
 }
 
-var rank = getQueryParam('rank'); // 获取rank参数
+var rank = getQueryParam('rank') - 1; // 获取rank参数
 /*var storedString = localStorage.getItem("members");
 var jsonData = JSON.parse(storedString);*/
 
@@ -23,8 +23,11 @@ fetch('data.json')
         console.log(data.members[rank].historyMMR);
 
         var headName = document.getElementById('name');
-        headName.textContent = data.members[rank].tfaName
-
+        headName.textContent = data.members[rank].tfaName;
+        document.getElementById('index').textContent = data.members[rank].tfaIndex;
+        document.getElementById('rank').textContent = data.members[rank].rank;
+        document.getElementById('mmr').textContent = data.members[rank].currentMMR;
+        document.getElementById('MMR').textContent = data.members[rank].currentMMR;
     })
     .catch(error => {
         console.error('There has been a problem with your fetch operation:', error);
