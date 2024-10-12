@@ -4,7 +4,9 @@ function getQueryParam(param) {
 }
 
 var rank = getQueryParam('rank'); // 获取rank参数
-var jsonData = localStorage.getItem("json");
+var storedString = localStorage.getItem("members");
+
+var jsonData = JSON.parse(storedString);
 
 console.log(jsonData);
 

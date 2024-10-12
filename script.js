@@ -35,7 +35,11 @@ fetch('data.json')
         //jsonData.members.forEach(item =)
         //globalData = jsonData;
         //console.log(globalData);
-        localStorage.setItem("json", jsonData);
+
+
+        var jsonString = JSON.stringify(jsonData);
+        localStorage.setItem("members", jsonString);
+
         jsonData.members.forEach(function (player, index) {
             var row = table.insertRow(-1); // 在表格末尾添加新行
             var cell1 = row.insertCell(0); // 当前名次
