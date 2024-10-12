@@ -21,6 +21,10 @@ fetch('data.json')
         console.log(data);
         console.log(data.members[rank].tfaName);
         console.log(data.members[rank].historyMMR);
+
+        var headName = document.getElementById('name');
+        headName.textContent = data.members[rank].tfaName
+
     })
     .catch(error => {
         console.error('There has been a problem with your fetch operation:', error);
