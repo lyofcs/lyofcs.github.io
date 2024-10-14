@@ -28,6 +28,13 @@ fetch('data.json')
         document.getElementById('rank').textContent = data.members[rank].rank;
         document.getElementById('mmr').textContent = data.members[rank].currentMMR;
         document.getElementById('MMR').textContent = data.members[rank].currentMMR;
+
+        var matches = document.getElementById('matches');
+        var wins = document.getElementById('wins');
+
+        matches.textContent = data.members[rank].totalMatches[0];
+        wins.textContent = data.members[rank].totalWinMatches[0];
+        document.getElementById('wins').textContent = wins / matches;
     })
     .catch(error => {
         console.error('There has been a problem with your fetch operation:', error);
