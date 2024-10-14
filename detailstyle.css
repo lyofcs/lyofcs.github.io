@@ -30,12 +30,13 @@
 
 .player-profile-record {
     color: #ecfb01;
+    text-align: right;
 }
 
 .player-stats {
     font-family: 'Montserrat', sans-serif;
-    background: #181717;
-    padding-bottom: 0px;
+    background: #a49797;
+    padding-bottom: 10px;
 }
 
 span {
@@ -57,34 +58,43 @@ h1 {
     font-size: 50px;
 }
 
+
+/*数据表*/
 .table {
     width: 100%;
     max-width: 100%;
     height: 500px;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
     background: white;
-
 }
 
 .player-current-season {
-    max-width: 800px;
+    /*max-width: 800px;*/
     margin: 0 auto;
-    padding: 10px 0px;
-
+    padding: 0px 0px;
 }
 
+/*参赛记录区域*/
 .season-schedule {
-    padding-left: 0;
+    /*background-color:aquamarine;*/
+    /*padding-left: 0px;
     text-align: center;
-    padding-right: 5px;
     height: 350px;
-    overflow: scroll;
-    overflow-x: hidden;
-    overflow-y: auto;
+    padding-right: 0px;
+    overflow-y: auto; /* 添加垂直滚动条 */
+    /*border: 1px solid #ccc; /* 表格边框 */
 }
+
+.table-area {
+    text-align: center;
+    height: 350px;
+    overflow-y: auto; /* 添加垂直滚动条 */
+    /*border: 1px solid #ccc; /* 表格边框 */
+}
+
 
 .scheduled-game {
-    font-size: 14px;
+    font-size: 12px;
     padding: 0 8px;
 }
 
@@ -127,14 +137,14 @@ th {
 .player-game-data {
     font-family: 'Montserrat', sans-serif;
     padding-top: 25px;
-    background-image: url(https://perch.roberts.edu/wp-content/uploads/2015/10/Soccer-Field-Night1.jpg);
-    background-position: center;
+    /*background-image: url(https://perch.roberts.edu/wp-content/uploads/2015/10/Soccer-Field-Night1.jpg);
+    background-position: center;*/
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
 }
 
 .overall-record {
-    text-align: center;
+    text-align: left;
     padding-bottom: 10px;
 }
 
@@ -144,7 +154,12 @@ th {
         text-shadow: 2px 3px 2px #161414;
     }
 
-.career-record:nth-of-type(3) {
+/*.career-record:nth-of-type(0) {
+}*/
+
+.chart-area{
+    width:100%;
+    height:270px;
 }
 
 
@@ -155,9 +170,9 @@ th {
     color: white;
 }
 
-.career-record-stats {
+/*.career-record-stats {
     border-right: 2px solid #fffafa;
-}
+}*/
 
 .career-win-percentage {
     padding-bottom: 25px;

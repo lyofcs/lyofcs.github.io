@@ -34,7 +34,8 @@ fetch('data.json')
 
         matches.textContent = data.members[rank].totalMatches[0];
         wins.textContent = data.members[rank].totalWinMatches[0];
-        document.getElementById('wins').textContent = wins / matches;
+        document.getElementById('winRate').textContent = wins / matches;
+        console.log(wins / matches);
     })
     .catch(error => {
         console.error('There has been a problem with your fetch operation:', error);
