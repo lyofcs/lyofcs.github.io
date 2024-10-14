@@ -33,7 +33,7 @@ fetch('data.json')
 
         matches.textContent = data.members[rank].totalMatches[0];
         wins.textContent = data.members[rank].totalWinMatches[0];
-        document.getElementById('winRate').textContent = Number(wins) / Number(matches);
+        document.getElementById('winRate').textContent = Number(wins.textContent) / Number(matches.textContent);
         console.log(wins / matches);
     })
     .catch(error => {
