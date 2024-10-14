@@ -25,9 +25,8 @@ fetch('data.json')
         var headName = document.getElementById('name');
         headName.textContent = data.members[rank].tfaName;
         document.getElementById('index').textContent = data.members[rank].tfaIndex;
-        document.getElementById('rank').textContent = data.members[rank].rank;
+        document.getElementById('rank').textContent = '#' + data.members[rank].rank;
         document.getElementById('mmr').textContent = data.members[rank].currentMMR;
-        document.getElementById('MMR').textContent = data.members[rank].currentMMR;
 
         var matches = document.getElementById('matches');
         var wins = document.getElementById('wins');
