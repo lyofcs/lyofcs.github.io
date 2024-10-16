@@ -131,6 +131,11 @@ h1 {
 
 th {
     text-align: center;
+    font-size:14px;
+}
+
+td{
+    font-size:14px;
 }
 
 /*最下边玩家数据区域*/
