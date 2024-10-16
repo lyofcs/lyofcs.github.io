@@ -48,8 +48,7 @@ fetch('data.json')
     })
     .then(jsonData => {
         data = jsonData;
-        dataUpdate();
-        jsonData.members.forEach(function (player, index) {
+        jsonData.members.forEach(function (player) {
             var row = tableTour.insertRow(-1); // 在表格末尾添加新行
             var cell1 = row.insertCell(0); // 比赛名次
             var cell2 = row.insertCell(1); // 赛事名称
@@ -57,6 +56,7 @@ fetch('data.json')
             var cell4 = row.insertCell(3); // 比分
             cell1.textContent = player.showInfo.historyResult.standing;
             console.log(player.showInfo.historyResult.standing);
+            console.log(player.tfaName);
             cell2.textContent = player.showInfo.historyResult.tour;
             cell3.textContent = player.showInfo.historyResult.rival;
             cell4.textContent = player.showInfo.historyResult.result;
@@ -72,6 +72,8 @@ fetch('data.json')
 
             cell23.textContent = rate;
         });
+
+        dataUpdate();
 
 
     })
