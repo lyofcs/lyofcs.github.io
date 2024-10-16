@@ -21,20 +21,6 @@
                 ['Loss', 27]
             ]);
 
-            /*var options = {
-                pieHole: 0.4,
-                legend: 'none',
-                backgroundColor: 'none',
-                chartArea: {
-                    width: '90%',
-                    height: '90%',
-                },
-                slices: {
-                    0: { color: '#5acc7f' },
-                    1: { color: '#777872' },
-                    2: { color: '#cc5a5d' }
-                }
-            };*/
             var options = {
                 title: 'Company Performance',
                 hAxis: { title: 'Year', titleTextStyle: { color: 'red' } },
@@ -64,8 +50,8 @@
                         <h1 id="name" class="profile-info--input">*选手ID</h1>
                     </div>
                     <div class="col-md-6 player-profile-record">
-                        <h1 class="game-result" id="mmr">*1</h1>
                         <h1 class="game-result" id="rank">*#1</h1>
+                        <h1 class="game-result" id="mmr">*1</h1>
                     </div>
                 </div>
                 <div class="row player-info-inputs">
@@ -77,13 +63,13 @@
                     </div>
                     <div class="col-md-2">
                         <div class="profile-info team">
-                            <span>对局场数</span>
+                            <span>比赛场数</span>
                             <h3 class="profile-info--input" id="matches">*100</h3>
                         </div>
                     </div>
                     <div class="col-md-2">
                         <div class="profile-info division">
-                            <span>对局胜场</span>
+                            <span>比赛胜场</span>
                             <h3 class="profile-info--input" id="wins">*70</h3>
                         </div>
                     </div>
@@ -91,6 +77,18 @@
                         <div class="profile-info location">
                             <span>对局胜率</span>
                             <h3 class="profile-info--input" id="winRate">*70%</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="profile-info location">
+                            <span>上次参赛</span>
+                            <h3 class="profile-info--input" id="lastTour">*70%</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="profile-info location">
+                            <span>上次名次</span>
+                            <h3 class="profile-info--input" id="lastStanding">*70%</h3>
                         </div>
                     </div>
                 </div>
