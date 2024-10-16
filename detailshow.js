@@ -16,9 +16,9 @@ function dataUpdate() {
     document.getElementById('mmr').textContent = data.members[rank].currentMMR;
 
     //赛事数据相关
-    document.getElementById('tours').textContent = data.members[rank].toursCount;
-    document.getElementById('lastTour').textContent = data.members[rank].lastTour;
-    document.getElementById('lastStanding').textContent = data.members[rank].lastTourRank;
+    document.getElementById('tours').textContent = data.members[rank].showInfo.toursCount;
+    document.getElementById('lastTour').textContent = data.members[rank].showInfo.lastTour;
+    document.getElementById('lastStanding').textContent = data.members[rank].showInfo.lastTourRank;
 
     //胜率相关
     matches.textContent = data.members[rank].totalMatches[0];
@@ -56,20 +56,21 @@ fetch('data.json')
             var cell3 = row.insertCell(2); // 对手ID
             var cell4 = row.insertCell(3); // 比分
             cell1.textContent = player.showInfo.historyResult.standing;
+            console.log(player.showInfo.historyResult.standing);
             cell2.textContent = player.showInfo.historyResult.tour;
             cell3.textContent = player.showInfo.historyResult.rival;
             cell4.textContent = player.showInfo.historyResult.result;
 
             var row2 = tableVersus.insertRow(-1); // 在表格末尾添加新行
-            var cell1 = row.insertCell(0); // 对手名称
-            var cell2 = row.insertCell(1); // 对局
-            var cell3 = row.insertCell(2); // 胜率
-            cell1.textContent = player.showInfo.ada.tfaName;
-            cell2.textContent = player.showInfo.ada.totalRound;
+            var cell21 = row2.insertCell(0); // 对手名称
+            var cell22 = row2.insertCell(1); // 对局
+            var cell23 = row2.insertCell(2); // 胜率
+            cell21.textContent = player.showInfo.ada.tfaName;
+            cell22.textContent = player.showInfo.ada.totalRound;
 
             var rate = (Number(player.showInfo.ada.totalWinRound) / Number(player.showInfo.ada.totalRound) * 100).toFixed(2) + '%';
 
-            cell3.textContent = rate;
+            cell23.textContent = rate;
         });
 
 
