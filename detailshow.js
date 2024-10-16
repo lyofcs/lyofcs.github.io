@@ -36,8 +36,8 @@ var headName = document.getElementById('name');
 var matches = document.getElementById('matches');
 var wins = document.getElementById('wins');
 
-var tableTour = document.querySelector('#rankings > tbody');
-var tableVersus = document.querySelector('#rankings > tbody');
+var tableTour = document.querySelector('#tourTable > tbody');
+var tableVersus = document.querySelector('#rivalTable > tbody');
 
 fetch('data.json')
     .then(response => {
