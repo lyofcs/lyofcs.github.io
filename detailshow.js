@@ -49,30 +49,34 @@ fetch('data.json')
     .then(jsonData => {
         data = jsonData;
         jsonData.members.forEach(function (player) {
-            var row = tableTour.insertRow(-1); // 在表格末尾添加新行
-            var cell1 = row.insertCell(0); // 比赛名次
-            var cell2 = row.insertCell(1); // 赛事名称
-            var cell3 = row.insertCell(2); // 对手ID
-            var cell4 = row.insertCell(3); // 比分
-            cell1.textContent = player.showInfo.historyResult.standing;
-            console.log(player.showInfo.historyResult.standing);
-            console.log(player.showInfo.toursCount);
-            console.log(player.showInfo.lastTour);
-            console.log(player.tfaName);
-            cell2.textContent = player.showInfo.historyResult.tour;
-            cell3.textContent = player.showInfo.historyResult.rival;
-            cell4.textContent = player.showInfo.historyResult.result;
+            player.showInfo.historyResult.forEach(function (item) {
+                var row = tableTour.insertRow(-1); // 在表格末尾添加新行
+                var cell1 = row.insertCell(0); // 比赛名次
+                var cell2 = row.insertCell(1); // 赛事名称
+                var cell3 = row.insertCell(2); // 对手ID
+                var cell4 = row.insertCell(3); // 比分
+                cell1.textContent = item.standing;
+                /*console.log(item.standing);
+                console.log(player.showInfo.toursCount);
+                console.log(player.showInfo.lastTour);
+                console.log(player.tfaName);*/
+                cell2.textContent = item.tour;
+                cell3.textContent = item.rival;
+                cell4.textContent = item.result;
+            }
 
-            var row2 = tableVersus.insertRow(-1); // 在表格末尾添加新行
-            var cell21 = row2.insertCell(0); // 对手名称
-            var cell22 = row2.insertCell(1); // 对局
-            var cell23 = row2.insertCell(2); // 胜率
-            cell21.textContent = player.showInfo.ada.tfaName;
-            cell22.textContent = player.showInfo.ada.totalRound;
+            player.showInfo.ada.forEach(function (item) {
+                var row2 = tableVersus.insertRow(-1); // 在表格末尾添加新行
+                var cell21 = row2.insertCell(0); // 对手名称
+                var cell22 = row2.insertCell(1); // 对局
+                var cell23 = row2.insertCell(2); // 胜率
+                cell21.textContent = item.tfaName;
+                cell22.textContent = item.totalRound;
 
-            var rate = (Number(player.showInfo.ada.totalWinRound) / Number(player.showInfo.ada.totalRound) * 100).toFixed(2) + '%';
+                var rate = (Number(item.totalWinRound) / Number(item.totalRound) * 100).toFixed(2) + '%';
 
-            cell23.textContent = rate;
+                cell23.textContent = rate;
+            }
         });
 
         dataUpdate();
