@@ -1,26 +1,26 @@
-//´ÓÓòÃûºó×º»ñÈ¡µ±Ç°rank
+//ä»åŸŸååç¼€è·å–å½“å‰rank
 function getQueryParam(param) {
     var searchParams = new URLSearchParams(window.location.search);
     return searchParams.get(param);
 }
 
-//¸üĞÂÏÔÊ¾Êı¾İ
+//æ›´æ–°æ˜¾ç¤ºæ•°æ®
 function dataUpdate() {
 
-    //IDÏà¹Ø
+    //IDç›¸å…³
     headName.textContent = data.members[rank].tfaName;
     document.getElementById('index').textContent = data.members[rank].tfaIndex;
 
-    //»ı·ÖÅÅÃûÏà¹Ø
+    //ç§¯åˆ†æ’åç›¸å…³
     document.getElementById('rank').textContent = '#' + data.members[rank].rank;
     document.getElementById('mmr').textContent = data.members[rank].currentMMR;
 
-    //ÈüÊÂÊı¾İÏà¹Ø
+    //èµ›äº‹æ•°æ®ç›¸å…³
     document.getElementById('tours').textContent = data.members[rank].showInfo.toursCount;
     document.getElementById('lastTour').textContent = data.members[rank].showInfo.lastTour;
     document.getElementById('lastStanding').textContent = data.members[rank].showInfo.lastTourRank;
 
-    //Ê¤ÂÊÏà¹Ø
+    //èƒœç‡ç›¸å…³
     matches.textContent = data.members[rank].totalMatches[0];
     wins.textContent = data.members[rank].totalWinMatches[0];
     document.getElementById('winRate').textContent = (Number(wins.textContent) / Number(matches.textContent) * 100).toFixed(2) + '%';
@@ -29,9 +29,9 @@ function dataUpdate() {
 
 
 var data;
-var rank = getQueryParam('rank') - 1; // »ñÈ¡rank²ÎÊı
+var rank = getQueryParam('rank') - 1; // è·å–rankå‚æ•°
 
-//»ñÈ¡Ò³Ãæ²¼¾ÖÔªËØid
+//è·å–é¡µé¢å¸ƒå±€å…ƒç´ id
 var headName = document.getElementById('name');
 var matches = document.getElementById('matches');
 var wins = document.getElementById('wins');
@@ -42,7 +42,7 @@ var tableVersus = document.querySelector('#rivalTable > tbody');
 fetch('data.json')
     .then(response => {
         if (response.ok) {
-            return response.json(); // ½«ÏìÓ¦×ª»»ÎªJSON
+            return response.json(); // å°†å“åº”è½¬æ¢ä¸ºJSON
         }
         throw new Error('Network response was not ok.');
     })
@@ -50,11 +50,11 @@ fetch('data.json')
         data = jsonData;
         jsonData.members.forEach(function (player) {
             player.showInfo.historyResult.forEach(function (item) {
-                var row = tableTour.insertRow(-1); // ÔÚ±í¸ñÄ©Î²Ìí¼ÓĞÂĞĞ
-                var cell1 = row.insertCell(0); // ±ÈÈüÃû´Î
-                var cell2 = row.insertCell(1); // ÈüÊÂÃû³Æ
-                var cell3 = row.insertCell(2); // ¶ÔÊÖID
-                var cell4 = row.insertCell(3); // ±È·Ö
+                var row = tableTour.insertRow(-1); // åœ¨è¡¨æ ¼æœ«å°¾æ·»åŠ æ–°è¡Œ
+                var cell1 = row.insertCell(0); // æ¯”èµ›åæ¬¡
+                var cell2 = row.insertCell(1); // èµ›äº‹åç§°
+                var cell3 = row.insertCell(2); // å¯¹æ‰‹ID
+                var cell4 = row.insertCell(3); // æ¯”åˆ†
                 cell1.textContent = item.standing;
                 /*console.log(item.standing);
                 console.log(player.showInfo.toursCount);
@@ -63,20 +63,20 @@ fetch('data.json')
                 cell2.textContent = item.tour;
                 cell3.textContent = item.rival;
                 cell4.textContent = item.result;
-            }
+            });
 
             player.showInfo.ada.forEach(function (item) {
-                var row2 = tableVersus.insertRow(-1); // ÔÚ±í¸ñÄ©Î²Ìí¼ÓĞÂĞĞ
-                var cell21 = row2.insertCell(0); // ¶ÔÊÖÃû³Æ
-                var cell22 = row2.insertCell(1); // ¶Ô¾Ö
-                var cell23 = row2.insertCell(2); // Ê¤ÂÊ
+                var row2 = tableVersus.insertRow(-1); // åœ¨è¡¨æ ¼æœ«å°¾æ·»åŠ æ–°è¡Œ
+                var cell21 = row2.insertCell(0); // å¯¹æ‰‹åç§°
+                var cell22 = row2.insertCell(1); // å¯¹å±€
+                var cell23 = row2.insertCell(2); // èƒœç‡
                 cell21.textContent = item.tfaName;
                 cell22.textContent = item.totalRound;
 
                 var rate = (Number(item.totalWinRound) / Number(item.totalRound) * 100).toFixed(2) + '%';
 
                 cell23.textContent = rate;
-            }
+            });
         });
 
         dataUpdate();
