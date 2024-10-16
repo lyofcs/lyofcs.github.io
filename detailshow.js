@@ -56,6 +56,8 @@ fetch('data.json')
             var cell4 = row.insertCell(3); // ±È·Ö
             cell1.textContent = player.showInfo.historyResult.standing;
             console.log(player.showInfo.historyResult.standing);
+            console.log(player.showInfo.toursCount);
+            console.log(player.showInfo.lastTour);
             console.log(player.tfaName);
             cell2.textContent = player.showInfo.historyResult.tour;
             cell3.textContent = player.showInfo.historyResult.rival;
