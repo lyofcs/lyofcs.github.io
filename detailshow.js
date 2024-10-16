@@ -61,7 +61,7 @@ fetch('data.json')
                 console.log(player.showInfo.lastTour);
                 console.log(player.tfaName);*/
                 cell2.textContent = item.tour;
-                cell3.textContent = item.rival;
+                cell3.textContent = " VS " + '<span class="scheduled-game">' + item.rival + '</span>';
                 cell4.textContent = item.result;
             });
 
@@ -70,7 +70,7 @@ fetch('data.json')
                 var cell21 = row2.insertCell(0); // 对手名称
                 var cell22 = row2.insertCell(1); // 对局
                 var cell23 = row2.insertCell(2); // 胜率
-                cell21.textContent = item.tfaName;
+                cell21.innerHTML = " VS " + '<span class="scheduled-game">' + item.tfaName + '</span>';
                 cell22.textContent = item.totalRound;
 
                 var rate = (Number(item.totalWinRound) / Number(item.totalRound) * 100).toFixed(2) + '%';
