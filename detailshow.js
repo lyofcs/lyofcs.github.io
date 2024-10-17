@@ -116,6 +116,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     width: '100%',
                     height: '100%',
 
+                    trendlines: {
+                        0: {} // 关闭趋势线，通过指定索引0和一个空对象
+                    }
+
                     animation: {
                         onComplete: function () {
                             var chartInstance = this.chart,
