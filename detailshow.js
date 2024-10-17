@@ -83,32 +83,35 @@ document.addEventListener('DOMContentLoaded', function () {
             });
 
             //处理图表相关
-            var chartData = new google.visualization.DataTable();
+            google.charts.load('current', { 'packages': ['corechart'] });
+            google.charts.setOnLoadCallback(drawChart);
+            function drawChart() {
+                var chartData = new google.visualization.DataTable();
 
-            // 解析JSON数据填充DataTable
-            var jsonObject = JSON.parse(jsonData);
-            chartData.addColumn('Tournament', 'MMR');
-            chartData.addRow("初始", 1500);
-            for (var i = player.historyMMR.length; i > 0; i--) {
-                chartData.addRow(data.tournaments[i].desc,player.historyMMR[i]);
+                // 解析JSON数据填充DataTable
+                //var jsonObject = JSON.parse(jsonData);
+                chartData.addColumn('Tournament', 'MMR');
+                chartData.addRow("初始", 1500);
+                for (var i = player.historyMMR.length; i > 0; i--) {
+                    chartData.addRow(data.tournaments[i].desc, player.historyMMR[i]);
+                }
+
+                var options = {
+                    title: 'Company Performance',
+                    hAxis: { title: 'Year', titleTextStyle: { color: 'red' } },
+                    vAxis: { title: 'Performance', titleTextStyle: { color: 'red' } },
+                    tooltip: {
+                        text: 'X: %{x}, Y: %{y}',
+                        trigger: 'both',
+                        isHtml: true
+                    },
+                    width: '100%',
+                    height: '100%',
+                };
+
+                var chart = new google.visualization.LineChart(document.getElementById('donutchart'));
+                chart.draw(chartData, options);
             }
-
-            var options = {
-                title: 'Company Performance',
-                hAxis: { title: 'Year', titleTextStyle: { color: 'red' } },
-                vAxis: { title: 'Performance', titleTextStyle: { color: 'red' } },
-                tooltip: {
-                    text: 'X: %{x}, Y: %{y}',
-                    trigger: 'both',
-                    isHtml: true
-                },
-                width: '100%',
-                height: '100%',
-            };
-
-            var chart = new google.visualization.LineChart(document.getElementById('donutchart'));
-            chart.draw(chartData, options);
-
 
 
             //更新数据显示
