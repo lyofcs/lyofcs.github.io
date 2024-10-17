@@ -118,8 +118,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     height: '100%',
                     legend: 'none',
 
-                    },
-                }
+                },
 
             var chart = new google.visualization.LineChart(document.getElementById('donutchart'));
             chart.draw(chartData, options);
