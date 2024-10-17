@@ -116,6 +116,37 @@ document.addEventListener('DOMContentLoaded', function () {
                     width: '100%',
                     height: '100%',
                     legend: 'none',
+
+                    hover: {
+                        animationDuration: 0
+                    },
+                    animation: {
+                        onComplete: function () {
+                            const chartInstance = this.chart,
+                                ctx = chartInstance.ctx;
+
+                            ctx.font = Chart.helpers.fontString(
+                                18,
+                                Chart.defaults.global.defaultFontStyle,
+                                Chart.defaults.global.defaultFontFamily
+                            );
+                            ctx.textAlign = "center";
+                            ctx.textBaseline = "bottom";
+
+                            this.data.datasets.forEach(function (dataset, i) {
+                                const meta = chartInstance.controller.getDatasetMeta(i);
+                                meta.data.forEach(function (bar, index) {
+                                    const data = dataset.data[index];
+                                    ctx.fillStyle = "#000";
+                                    ctx.fillText(data, bar._model.x, bar._model.y - 2);
+                                });
+                            });
+                        }
+                    },
+                    tooltips: {
+                        enabled: true
+                    },
+                    responsive: true,
                 };
 
                 var chart = new google.visualization.LineChart(document.getElementById('donutchart'));
