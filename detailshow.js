@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
                 var options = {
-                    title: 'Company Performance',
+                    title: '积分变化曲线',
                     hAxis: {
                         title: '赛事', titleTextStyle: {
                             color: 'red'
@@ -115,13 +115,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     },
                     width: '100%',
                     height: '100%',
-
-                    trendlines: {
-                        0: {
-                            labelInLegend: 'none',
-                            showColor: false
-                        } // 关闭趋势线，通过指定索引0和一个空对象
-                    },
+                    legend: 'none',
                 };
 
                 var chart = new google.visualization.LineChart(document.getElementById('donutchart'));
