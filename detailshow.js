@@ -92,9 +92,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 //var jsonObject = JSON.parse(jsonData);
                 chartData.addColumn('string', 'Tournament');
                 chartData.addColumn('number', 'MMR');
-                chartData.addRow(["初始", 1500]);
+                chartData.addColumn({ type: 'number', role: 'annotation' });
+                chartData.addRow(["初始", 1500,1500]);
                 for (var i = player.historyMMR.length; i > 0; i--) {
-                    chartData.addRow([data.tournaments[i-1].desc, player.historyMMR[i-1]]);
+                    chartData.addRow([data.tournaments[i - 1].desc, player.historyMMR[i - 1], player.historyMMR[i - 1]]);
                 }
 
                 var options = {
@@ -117,34 +118,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     height: '100%',
                     legend: 'none',
 
-                    hover: {
-                        animationDuration: 0
-                    },
-                    animation: {
-                        onComplete: function () {
-                            const chartInstance = this.chart,
-                                ctx = chartInstance.ctx;
-
-                            ctx.font = Chart.helpers.fontString(
-                                18,
-                                Chart.defaults.global.defaultFontStyle,
-                                Chart.defaults.global.defaultFontFamily
-                            );
-                            ctx.textAlign = "center";
-                            ctx.textBaseline = "bottom";
-
-                            this.data.datasets.forEach(function (dataset, i) {
-                                const meta = chartInstance.controller.getDatasetMeta(i);
-                                meta.data.forEach(function (bar, index) {
-                                    const data = dataset.data[index];
-                                    ctx.fillStyle = "#000";
-                                    ctx.fillText(data, bar._model.x, bar._model.y - 2);
-                                });
-                            });
-                        }
-                    },
-                    tooltips: {
-                        enabled: true
                     },
                     responsive: true,
                 };
