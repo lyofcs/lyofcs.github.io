@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 chartData.addColumn('string', 'Tournament');
                 chartData.addColumn('number', 'MMR');
                 chartData.addColumn({ type: 'number', role: 'annotation' });
-                chartData.addRow(["初始", 1500,1500]);
+                chartData.addRow(["初始", 1500, 1500]);
                 for (var i = player.historyMMR.length; i > 0; i--) {
                     chartData.addRow([data.tournaments[i - 1].desc, player.historyMMR[i - 1], player.historyMMR[i - 1]]);
                 }
@@ -118,8 +118,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     height: '100%',
                     legend: 'none',
 
-                },
-
+                };
             var chart = new google.visualization.LineChart(document.getElementById('donutchart'));
             chart.draw(chartData, options);
 
