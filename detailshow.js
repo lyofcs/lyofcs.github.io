@@ -1,26 +1,26 @@
-//´ÓÓòÃûºó×º»ñÈ¡µ±Ç°rank
+//ä»åŸŸååç¼€è·å–å½“å‰rank
 function getQueryParam(param) {
     var searchParams = new URLSearchParams(window.location.search);
     return searchParams.get(param);
 }
 
-//¸üĞÂÏÔÊ¾Êı¾İ
+//æ›´æ–°æ˜¾ç¤ºæ•°æ®
 function dataUpdate() {
 
-    //IDÏà¹Ø
+    //IDç›¸å…³
     headName.textContent = data.members[rank].tfaName;
     document.getElementById('index').textContent = data.members[rank].tfaIndex;
 
-    //»ı·ÖÅÅÃûÏà¹Ø
+    //ç§¯åˆ†æ’åç›¸å…³
     document.getElementById('rank').textContent = '#' + data.members[rank].rank;
     document.getElementById('mmr').textContent = data.members[rank].currentMMR;
 
-    //ÈüÊÂÊı¾İÏà¹Ø
+    //èµ›äº‹æ•°æ®ç›¸å…³
     document.getElementById('tours').textContent = data.members[rank].showInfo.toursCount;
     document.getElementById('lastTour').textContent = data.members[rank].showInfo.lastTour;
     document.getElementById('lastStanding').textContent = data.members[rank].showInfo.lastTourRank;
 
-    //Ê¤ÂÊÏà¹Ø
+    //èƒœç‡ç›¸å…³
     matches.textContent = data.members[rank].totalMatches[0];
     wins.textContent = data.members[rank].totalWinMatches[0];
     document.getElementById('winRate').textContent = (Number(wins.textContent) / Number(matches.textContent) * 100).toFixed(2) + '%';
@@ -29,9 +29,9 @@ function dataUpdate() {
 
 
 var data;
-var rank = getQueryParam('rank') - 1; // »ñÈ¡rank²ÎÊı
+var rank = getQueryParam('rank') - 1; // è·å–rankå‚æ•°
 
-//»ñÈ¡Ò³Ãæ²¼¾ÖÔªËØid
+//è·å–é¡µé¢å¸ƒå±€å…ƒç´ id
 var headName = document.getElementById('name');
 var matches = document.getElementById('matches');
 var wins = document.getElementById('wins');
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
     fetch('data.json')
         .then(response => {
             if (response.ok) {
-                return response.json(); // ½«ÏìÓ¦×ª»»ÎªJSON
+                return response.json(); // å°†å“åº”è½¬æ¢ä¸ºJSON
             }
             throw new Error('Network response was not ok.');
         })
@@ -51,13 +51,13 @@ document.addEventListener('DOMContentLoaded', function () {
             data = jsonData;
             var player = data.members[rank];
 
-            //´¦ÀíÈüÊÂ¼ÇÂ¼
+            //å¤„ç†èµ›äº‹è®°å½•
             player.showInfo.historyResult.forEach(function (item) {
-                var row = tableTour.insertRow(-1); // ÔÚ±í¸ñÄ©Î²Ìí¼ÓĞÂĞĞ
-                var cell1 = row.insertCell(0); // ±ÈÈüÃû´Î
-                var cell2 = row.insertCell(1); // ÈüÊÂÃû³Æ
-                var cell3 = row.insertCell(2); // ¶ÔÊÖID
-                var cell4 = row.insertCell(3); // ±È·Ö
+                var row = tableTour.insertRow(-1); // åœ¨è¡¨æ ¼æœ«å°¾æ·»åŠ æ–°è¡Œ
+                var cell1 = row.insertCell(0); // æ¯”èµ›åæ¬¡
+                var cell2 = row.insertCell(1); // èµ›äº‹åç§°
+                var cell3 = row.insertCell(2); // å¯¹æ‰‹ID
+                var cell4 = row.insertCell(3); // æ¯”åˆ†
                 cell1.textContent = item.standing;
                 /*console.log(item.standing);
                 console.log(player.showInfo.toursCount);
@@ -68,12 +68,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 cell4.textContent = item.result;
             });
 
-            //´¦Àí½»ÊÖ¼ÇÂ¼
+            //å¤„ç†äº¤æ‰‹è®°å½•
             player.showInfo.ada.forEach(function (item) {
-                var row2 = tableVersus.insertRow(-1); // ÔÚ±í¸ñÄ©Î²Ìí¼ÓĞÂĞĞ
-                var cell21 = row2.insertCell(0); // ¶ÔÊÖÃû³Æ
-                var cell22 = row2.insertCell(1); // ¶Ô¾Ö
-                var cell23 = row2.insertCell(2); // Ê¤ÂÊ
+                var row2 = tableVersus.insertRow(-1); // åœ¨è¡¨æ ¼æœ«å°¾æ·»åŠ æ–°è¡Œ
+                var cell21 = row2.insertCell(0); // å¯¹æ‰‹åç§°
+                var cell22 = row2.insertCell(1); // å¯¹å±€
+                var cell23 = row2.insertCell(2); // èƒœç‡
                 cell21.innerHTML = " VS " + '<span class="scheduled-game">' + item.tfaName + '</span>';
                 cell22.textContent = item.totalRound;
 
@@ -82,16 +82,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 cell23.textContent = rate;
             });
 
-            //´¦ÀíÍ¼±íÏà¹Ø
+            //å¤„ç†å›¾è¡¨ç›¸å…³
             google.charts.load('current', { 'packages': ['corechart'] });
             google.charts.setOnLoadCallback(drawChart);
             function drawChart() {
                 var chartData = new google.visualization.DataTable();
 
-                // ½âÎöJSONÊı¾İÌî³äDataTable
+                // è§£æJSONæ•°æ®å¡«å……DataTable
                 //var jsonObject = JSON.parse(jsonData);
-                chartData.addColumn('Tournament', 'MMR');
-                chartData.addRow("³õÊ¼", 1500);
+                chartData.addColumn('string', 'Tournament');
+                chartData.addColumn('number', 'MMR');
+                chartData.addRow("åˆå§‹", 1500);
                 for (var i = player.historyMMR.length; i > 0; i--) {
                     chartData.addRow(data.tournaments[i].desc, player.historyMMR[i]);
                 }
@@ -114,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
 
-            //¸üĞÂÊı¾İÏÔÊ¾
+            //æ›´æ–°æ•°æ®æ˜¾ç¤º
             dataUpdate();
         })
         .catch(error => {
