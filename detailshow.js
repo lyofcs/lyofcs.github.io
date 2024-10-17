@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 chartData.addColumn('number', 'MMR');
                 chartData.addRow(["初始", 1500]);
                 for (var i = player.historyMMR.length; i > 0; i--) {
-                    chartData.addRow([data.tournaments[i].desc, player.historyMMR[i]]);
+                    chartData.addRow([data.tournaments[i-1].desc, player.historyMMR[i-1]]);
                 }
 
                 var options = {
