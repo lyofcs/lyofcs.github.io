@@ -39,16 +39,17 @@ var wins = document.getElementById('wins');
 var tableTour = document.querySelector('#tourTable > tbody');
 var tableVersus = document.querySelector('#rivalTable > tbody');
 
-fetch('data.json')
-    .then(response => {
-        if (response.ok) {
-            return response.json(); // 将响应转换为JSON
-        }
-        throw new Error('Network response was not ok.');
-    })
-    .then(jsonData => {
-        data = jsonData;
-        jsonData.members.forEach(function (player) {
+document.addEventListener('DOMContentLoaded', function () {
+    fetch('data.json')
+        .then(response => {
+            if (response.ok) {
+                return response.json(); // 将响应转换为JSON
+            }
+            throw new Error('Network response was not ok.');
+        })
+        .then(jsonData => {
+            data = jsonData;
+            var player = data.members[rank];
             player.showInfo.historyResult.forEach(function (item) {
                 var row = tableTour.insertRow(-1); // 在表格末尾添加新行
                 var cell1 = row.insertCell(0); // 比赛名次
@@ -77,16 +78,12 @@ fetch('data.json')
 
                 cell23.textContent = rate;
             });
+        })
+        .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
         });
-
         dataUpdate();
-
-
-    })
-    .catch(error => {
-        console.error('There has been a problem with your fetch operation:', error);
-    });
-
+});
 
 
 /*console.log(jsonData);
