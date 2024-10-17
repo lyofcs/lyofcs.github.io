@@ -92,9 +92,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 //var jsonObject = JSON.parse(jsonData);
                 chartData.addColumn('string', 'Tournament');
                 chartData.addColumn('number', 'MMR');
-                chartData.addRow("初始", 1500);
+                chartData.addRow(["初始", 1500]);
                 for (var i = player.historyMMR.length; i > 0; i--) {
-                    chartData.addRow(data.tournaments[i].desc, player.historyMMR[i]);
+                    chartData.addRow([data.tournaments[i].desc, player.historyMMR[i]]);
                 }
 
                 var options = {
