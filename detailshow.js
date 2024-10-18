@@ -60,15 +60,18 @@ document.addEventListener('DOMContentLoaded', function () {
                 var cell4 = row.insertCell(3); // 比分
                 cell1.textContent = item.standing;
                 switch (item.standing) {
-                    case '1':
+                    case 1:
                         cell1.style.backgroundColor = "#CD7F32";
                         console.log(item.standing + "金色");
-                    case '2':
+                        break;
+                    case 2:
                         cell1.style.backgroundColor = "#E6E8FA";
                         console.log(item.standing + "银色");
-                    case '3':
+                        break;
+                    case 3:
                         cell1.style.backgroundColor = "#8C7853";
                         console.log(item.standing + "铜色");
+                        break;
                 }
                 cell2.textContent = item.tour;
                 cell3.innerHTML = " VS " + '<span class="scheduled-game">' + item.rival + '</span>';
@@ -82,12 +85,20 @@ document.addEventListener('DOMContentLoaded', function () {
                 var cell21 = row2.insertCell(0); // 对手名称
                 var cell22 = row2.insertCell(1); // 对局
                 var cell23 = row2.insertCell(2); // 胜率
+
                 cell21.innerHTML = " VS " + '<span class="scheduled-game">' + item.tfaName + '</span>';
                 cell22.textContent = item.totalWinRound + "-" + (Number(item.totalRound) - Number(item.totalWinRound));
 
-                var rate = (Number(item.totalWinRound) / Number(item.totalRound) * 100).toFixed(2) + '%';
+                var rate = (Number(item.totalWinRound) / Number(item.totalRound) * 100);
 
-                cell23.textContent = rate;
+                cell23.textContent = rate.toFixed(2) + '%';
+
+                if (rate > 50) {
+                    row2.style.color = "green";
+                }
+                else if (rate < 50) {
+                    row2.style.color = "red";
+                }
             });
 
             //处理图表相关
