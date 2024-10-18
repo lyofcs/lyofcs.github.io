@@ -94,7 +94,7 @@ h1 {
 
 
 .scheduled-game {
-    font-size: 12px;
+    font-size: 14px;
     padding: 0 8px;
 }
 
@@ -131,11 +131,11 @@ h1 {
 
 th {
     text-align: center;
-    font-size:18px;
+    font-size:16px;
 }
 
 td{
-    font-size:18px;
+    font-size:16px;
 }
 
 /*最下边玩家数据区域*/
