@@ -106,6 +106,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         },
                         textStyle: {
                             fontSize: 10,
+                            format: '#,##0'
                         }
                     },
                     vAxis: { title: '积分', titleTextStyle: { color: 'red' } },
