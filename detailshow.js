@@ -104,6 +104,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
 
             //处理历史荣誉
+            console.log("aaaaaaaa" + player.showInfo.honor.length);
             if (player.showInfo.honor.length > 0) {
                 console.log("ASAAAA");
                 player.showInfo.honor.forEach(function (imageSrc) {
