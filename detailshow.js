@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 chartData.addRow(["初始", 1500, 1500]);
                 for (var i = player.historyMMR.length; i > 0; i--) {
                     var join = (player.historyIn[i - 1]) ? "参赛\r\n" : "";
-                    chartData.addRow([data.tournaments[i - 1].desc, player.historyMMR[i - 1], join + player.historyMMR[i - 1]]);
+                    chartData.addRow([data.tournaments[i - 1].desc, player.historyMMR[i - 1], join + String(player.historyMMR[i - 1])]);
                 }
 
                 var options = {
