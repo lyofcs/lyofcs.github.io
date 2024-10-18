@@ -1,26 +1,26 @@
-//ä»åŸŸååç¼€è·å–å½“å‰rank
+//´ÓÓòÃûºó×º»ñÈ¡µ±Ç°rank
 function getQueryParam(param) {
     var searchParams = new URLSearchParams(window.location.search);
     return searchParams.get(param);
 }
 
-//æ›´æ–°æ˜¾ç¤ºæ•°æ®
+//¸üĞÂÏÔÊ¾Êı¾İ
 function dataUpdate() {
 
-    //IDç›¸å…³
+    //IDÏà¹Ø
     headName.textContent = data.members[rank].tfaName;
     document.getElementById('index').textContent = data.members[rank].tfaIndex;
 
-    //ç§¯åˆ†æ’åç›¸å…³
+    //»ı·ÖÅÅÃûÏà¹Ø
     document.getElementById('rank').textContent = '#' + data.members[rank].rank;
     document.getElementById('mmr').textContent = data.members[rank].currentMMR;
 
-    //èµ›äº‹æ•°æ®ç›¸å…³
+    //ÈüÊÂÊı¾İÏà¹Ø
     document.getElementById('tours').textContent = data.members[rank].showInfo.toursCount;
     document.getElementById('lastTour').textContent = data.members[rank].showInfo.lastTour;
     document.getElementById('lastStanding').textContent = data.members[rank].showInfo.lastTourRank;
 
-    //èƒœç‡ç›¸å…³
+    //Ê¤ÂÊÏà¹Ø
     matches.textContent = data.members[rank].totalMatches[0];
     wins.textContent = data.members[rank].totalWinMatches[0];
     document.getElementById('winRate').textContent = (Number(wins.textContent) / Number(matches.textContent) * 100).toFixed(2) + '%';
@@ -29,9 +29,9 @@ function dataUpdate() {
 
 
 var data;
-var rank = getQueryParam('rank') - 1; // è·å–rankå‚æ•°
+var rank = getQueryParam('rank') - 1; // »ñÈ¡rank²ÎÊı
 
-//è·å–é¡µé¢å¸ƒå±€å…ƒç´ id
+//»ñÈ¡Ò³Ãæ²¼¾ÖÔªËØid
 var headName = document.getElementById('name');
 var matches = document.getElementById('matches');
 var wins = document.getElementById('wins');
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
     fetch('data.json')
         .then(response => {
             if (response.ok) {
-                return response.json(); // å°†å“åº”è½¬æ¢ä¸ºJSON
+                return response.json(); // ½«ÏìÓ¦×ª»»ÎªJSON
             }
             throw new Error('Network response was not ok.');
         })
@@ -51,13 +51,13 @@ document.addEventListener('DOMContentLoaded', function () {
             data = jsonData;
             var player = data.members[rank];
 
-            //å¤„ç†èµ›äº‹è®°å½•
+            //´¦ÀíÈüÊÂ¼ÇÂ¼
             player.showInfo.historyResult.forEach(function (item) {
-                var row = tableTour.insertRow(-1); // åœ¨è¡¨æ ¼æœ«å°¾æ·»åŠ æ–°è¡Œ
-                var cell1 = row.insertCell(0); // æ¯”èµ›åæ¬¡
-                var cell2 = row.insertCell(1); // èµ›äº‹åç§°
-                var cell3 = row.insertCell(2); // å¯¹æ‰‹ID
-                var cell4 = row.insertCell(3); // æ¯”åˆ†
+                var row = tableTour.insertRow(-1); // ÔÚ±í¸ñÄ©Î²Ìí¼ÓĞÂĞĞ
+                var cell1 = row.insertCell(0); // ±ÈÈüÃû´Î
+                var cell2 = row.insertCell(1); // ÈüÊÂÃû³Æ
+                var cell3 = row.insertCell(2); // ¶ÔÊÖID
+                var cell4 = row.insertCell(3); // ±È·Ö
                 cell1.textContent = item.standing;
                 /*console.log(item.standing);
                 console.log(player.showInfo.toursCount);
@@ -68,12 +68,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 cell4.textContent = item.result;
             });
 
-            //å¤„ç†äº¤æ‰‹è®°å½•
+            //´¦Àí½»ÊÖ¼ÇÂ¼
             player.showInfo.ada.forEach(function (item) {
-                var row2 = tableVersus.insertRow(-1); // åœ¨è¡¨æ ¼æœ«å°¾æ·»åŠ æ–°è¡Œ
-                var cell21 = row2.insertCell(0); // å¯¹æ‰‹åç§°
-                var cell22 = row2.insertCell(1); // å¯¹å±€
-                var cell23 = row2.insertCell(2); // èƒœç‡
+                var row2 = tableVersus.insertRow(-1); // ÔÚ±í¸ñÄ©Î²Ìí¼ÓĞÂĞĞ
+                var cell21 = row2.insertCell(0); // ¶ÔÊÖÃû³Æ
+                var cell22 = row2.insertCell(1); // ¶Ô¾Ö
+                var cell23 = row2.insertCell(2); // Ê¤ÂÊ
                 cell21.innerHTML = " VS " + '<span class="scheduled-game">' + item.tfaName + '</span>';
                 cell22.textContent = item.totalRound;
 
@@ -82,26 +82,28 @@ document.addEventListener('DOMContentLoaded', function () {
                 cell23.textContent = rate;
             });
 
-            //å¤„ç†å›¾è¡¨ç›¸å…³
+            //´¦ÀíÍ¼±íÏà¹Ø
             google.charts.load('current', { 'packages': ['corechart'] });
             google.charts.setOnLoadCallback(drawChart);
             function drawChart() {
                 var chartData = new google.visualization.DataTable();
 
-                // è§£æJSONæ•°æ®å¡«å……DataTable
+                // ½âÎöJSONÊı¾İÌî³äDataTable
                 //var jsonObject = JSON.parse(jsonData);
                 chartData.addColumn('string', 'Tournament');
                 chartData.addColumn('number', 'MMR');
                 chartData.addColumn({ type: 'number', role: 'annotation' });
-                chartData.addRow(["åˆå§‹", 1500, 1500]);
+                chartData.addRow(["³õÊ¼", 1500, 1500]);
                 for (var i = player.historyMMR.length; i > 0; i--) {
                     chartData.addRow([data.tournaments[i - 1].desc, player.historyMMR[i - 1], player.historyMMR[i - 1]]);
                 }
 
                 var options = {
-                    title: 'ç§¯åˆ†å˜åŒ–æ›²çº¿',
+                    title: '»ı·Ö±ä»¯ÇúÏß',
                     hAxis: {
-                        title: 'èµ›äº‹', titleTextStyle: {
+                        slantedText: true,
+                        slantedTextAngle: 90,
+                        title: 'ÈüÊÂ', titleTextStyle: {
                             color: 'red'
                         },
                         textStyle: {
@@ -109,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             format: '#,##0'
                         }
                     },
-                    vAxis: { title: 'ç§¯åˆ†', titleTextStyle: { color: 'red' } },
+                    vAxis: { title: '»ı·Ö', titleTextStyle: { color: 'red' } },
                     tooltip: {
                         text: 'X: %{x}, Y: %{y}',
                         trigger: 'both',
@@ -123,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 var chart = new google.visualization.LineChart(document.getElementById('donutchart'));
                 chart.draw(chartData, options);
             };
-            //æ›´æ–°æ•°æ®æ˜¾ç¤º
+            //¸üĞÂÊı¾İÏÔÊ¾
             dataUpdate();
         })
         .catch(error => {
