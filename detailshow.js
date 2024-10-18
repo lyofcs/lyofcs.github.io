@@ -101,14 +101,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 var options = {
                     title: '积分变化曲线',
                     hAxis: {
-                        slantedText: true,
-                        slantedTextAngle: 0,
+                        slantedText: false,
                         title: '赛事', titleTextStyle: {
                             color: 'red'
                         },
                         textStyle: {
                             fontSize: 8,
-                            format: '#####,####'
+                            //format: '#####,####'
                         }
                     },
                     vAxis: { title: '积分', titleTextStyle: { color: 'red' } },
