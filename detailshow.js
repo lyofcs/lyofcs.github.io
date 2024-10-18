@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
             player.showInfo.historyResult.forEach(function (item) {
                 var row = tableTour.insertRow(-1); // 在表格末尾添加新行
                 row.style.backgroundColor = "green";
-                row.style.textColor = "yellow";
+                row.style.color = "yellow";
                 var cell1 = row.insertCell(0); // 比赛名次
                 var cell2 = row.insertCell(1); // 赛事名称
                 var cell3 = row.insertCell(2); // 对手ID
@@ -74,7 +74,6 @@ document.addEventListener('DOMContentLoaded', function () {
             //处理交手记录
             player.showInfo.ada.forEach(function (item) {
                 var row2 = tableVersus.insertRow(-1); // 在表格末尾添加新行
-                row2.color = "green";
                 var cell21 = row2.insertCell(0); // 对手名称
                 var cell22 = row2.insertCell(1); // 对局
                 var cell23 = row2.insertCell(2); // 胜率
