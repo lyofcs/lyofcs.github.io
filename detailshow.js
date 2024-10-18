@@ -68,9 +68,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 cell4.textContent = item.result;
             });
 
+
             //处理交手记录
             player.showInfo.ada.forEach(function (item) {
                 var row2 = tableVersus.insertRow(-1); // 在表格末尾添加新行
+                row2.color = "green";
                 var cell21 = row2.insertCell(0); // 对手名称
                 var cell22 = row2.insertCell(1); // 对局
                 var cell23 = row2.insertCell(2); // 胜率
