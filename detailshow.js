@@ -119,9 +119,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     legend: 'none',
 
                 };
-            var chart = new google.visualization.LineChart(document.getElementById('donutchart'));
-            chart.draw(chartData, options);
-
+                var chart = new google.visualization.LineChart(document.getElementById('donutchart'));
+                chart.draw(chartData, options);
+            };
             //更新数据显示
             dataUpdate();
         })
