@@ -62,10 +62,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 switch (item.standing) {
                     case 1:
                         cell1.style.backgroundColor = "#CD7F32";
+                        console.log(item.standing + "金色");
                     case 2:
                         cell1.style.backgroundColor = "#E6E8FA";
+                        console.log(item.standing + "银色");
                     case 3:
                         cell1.style.backgroundColor = "#8C7853";
+                        console.log(item.standing + "铜色");
                 }
                 cell2.textContent = item.tour;
                 cell3.innerHTML = " VS " + '<span class="scheduled-game">' + item.rival + '</span>';
