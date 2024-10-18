@@ -54,6 +54,8 @@ document.addEventListener('DOMContentLoaded', function () {
             //处理赛事记录
             player.showInfo.historyResult.forEach(function (item) {
                 var row = tableTour.insertRow(-1); // 在表格末尾添加新行
+                row.style.backgroundColor = "green";
+                row.style.textColor = "yellow";
                 var cell1 = row.insertCell(0); // 比赛名次
                 var cell2 = row.insertCell(1); // 赛事名称
                 var cell3 = row.insertCell(2); // 对手ID
