@@ -54,17 +54,19 @@ document.addEventListener('DOMContentLoaded', function () {
             //处理赛事记录
             player.showInfo.historyResult.forEach(function (item) {
                 var row = tableTour.insertRow(-1); // 在表格末尾添加新行
-                row.style.backgroundColor = "green";
-                row.style.color = "yellow";
                 var cell1 = row.insertCell(0); // 比赛名次
                 var cell2 = row.insertCell(1); // 赛事名称
                 var cell3 = row.insertCell(2); // 对手ID
                 var cell4 = row.insertCell(3); // 比分
                 cell1.textContent = item.standing;
-                /*console.log(item.standing);
-                console.log(player.showInfo.toursCount);
-                console.log(player.showInfo.lastTour);
-                console.log(player.tfaName);*/
+                switch (item.standing) {
+                    case 1:
+                        cell1.style.backgroundColor = "#CD7F32";
+                    case 2:
+                        cell1.style.backgroundColor = "#E6E8FA";
+                    case 3:
+                        cell1.style.backgroundColor = "#8C7853";
+                }
                 cell2.textContent = item.tour;
                 cell3.innerHTML = " VS " + '<span class="scheduled-game">' + item.rival + '</span>';
                 cell4.textContent = item.result;
@@ -78,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 var cell22 = row2.insertCell(1); // 对局
                 var cell23 = row2.insertCell(2); // 胜率
                 cell21.innerHTML = " VS " + '<span class="scheduled-game">' + item.tfaName + '</span>';
-                cell22.textContent = item.totalRound;
+                cell22.textContent = item.totalWinRound + "-" + (Number(item.totalRound) - Number(item.totalWinRound));
 
                 var rate = (Number(item.totalWinRound) / Number(item.totalRound) * 100).toFixed(2) + '%';
 
