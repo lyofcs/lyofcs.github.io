@@ -110,7 +110,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     img.src = 'logo.png';
                     container.appendChild(img);
                 });
-                }
             }
 
             //处理图表相关
