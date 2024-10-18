@@ -39,6 +39,8 @@ var wins = document.getElementById('wins');
 var tableTour = document.querySelector('#tourTable > tbody');
 var tableVersus = document.querySelector('#rivalTable > tbody');
 
+var container = document.getElementById('history-honor');
+
 document.addEventListener('DOMContentLoaded', function () {
     fetch('data.json')
         .then(response => {
@@ -101,6 +103,16 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
 
+            //处理历史荣誉
+            if (player.showInfo.honor.count > 0) {
+                player.showInfo.honor.forEach(function (imageSrc){
+                    var img = document.createElement('img');
+                    img.src = 'logo.png';
+                    container.appendChild(img);
+                });
+                }
+            }
+
             //处理图表相关
             google.charts.load('current', { 'packages': ['corechart'] });
             google.charts.setOnLoadCallback(drawChart);
@@ -145,6 +157,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 var chart = new google.visualization.LineChart(document.getElementById('donutchart'));
                 chart.draw(chartData, options);
             };
+
             //更新数据显示
             dataUpdate();
         })
