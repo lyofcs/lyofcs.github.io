@@ -92,10 +92,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 //var jsonObject = JSON.parse(jsonData);
                 chartData.addColumn('string', 'Tournament');
                 chartData.addColumn('number', 'MMR');
-                chartData.addColumn({ type: 'number', role: 'annotation' });
+                chartData.addColumn({ type: 'string', role: 'annotation' });
                 chartData.addRow(["初始", 1500, 1500]);
                 for (var i = player.historyMMR.length; i > 0; i--) {
-                    chartData.addRow([data.tournaments[i - 1].desc, player.historyMMR[i - 1], player.historyMMR[i - 1]]);
+                    var join = (player.historyIn[i - 1]) ? "参赛\r\n" : "";
+                    chartData.addRow([data.tournaments[i - 1].desc, player.historyMMR[i - 1], join + player.historyMMR[i - 1]]);
                 }
 
                 var options = {
