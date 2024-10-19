@@ -14,7 +14,7 @@
     text-transform: uppercase;
     color: white;
     text-shadow: 2px 3px 2px #161414;
-    background-image: url('logo.png');
+    background-image: url('/img/logo.png');
     background-position: center;
     background-repeat: no-repeat;
     border: 1px solid transparent;
@@ -59,7 +59,7 @@ h1 {
 }
 
 
-/*Êı¾İ±í*/
+/*æ•°æ®è¡¨*/
 .table {
     width: 100%;
     max-width: 100%;
@@ -74,22 +74,22 @@ h1 {
     padding: 0px 0px;
 }
 
-/*²ÎÈü¼ÇÂ¼ÇøÓò*/
+/*å‚èµ›è®°å½•åŒºåŸŸ*/
 .season-schedule {
     /*background-color:aquamarine;*/
     /*padding-left: 0px;
     text-align: center;
     height: 350px;
     padding-right: 0px;
-    overflow-y: auto; /* Ìí¼Ó´¹Ö±¹ö¶¯Ìõ */
-    /*border: 1px solid #ccc; /* ±í¸ñ±ß¿ò */
+    overflow-y: auto; /* æ·»åŠ å‚ç›´æ»šåŠ¨æ¡ */
+    /*border: 1px solid #ccc; /* è¡¨æ ¼è¾¹æ¡† */
 }
 
 .table-area {
     text-align: center;
     max-height: 350px;
-    overflow-y: auto; /* Ìí¼Ó´¹Ö±¹ö¶¯Ìõ */
-    /*border: 1px solid #ccc; /* ±í¸ñ±ß¿ò */
+    overflow-y: auto; /* æ·»åŠ å‚ç›´æ»šåŠ¨æ¡ */
+    /*border: 1px solid #ccc; /* è¡¨æ ¼è¾¹æ¡† */
 }
 
 
@@ -97,6 +97,18 @@ h1 {
     font-size: 14px;
     padding: 0 8px;
 }
+
+.scheduled-game-red {
+    color:red;
+    font-size: 14px;
+    padding: 0 8px;
+}
+.scheduled-game-green {
+    color:green;
+    font-size: 14px;
+    padding: 0 8px;
+}
+
 
 .wells-container {
     padding-right: 0px;
@@ -138,7 +150,7 @@ td{
     font-size:16px;
 }
 
-/*×îÏÂ±ßÍæ¼ÒÊı¾İÇøÓò*/
+/*æœ€ä¸‹è¾¹ç©å®¶æ•°æ®åŒºåŸŸ*/
 .player-game-data {
     font-family: 'Montserrat', sans-serif;
     padding-top: 25px;
@@ -168,7 +180,7 @@ td{
 }
 
 
-/*ÓÒÏÂ½ÇÊ¤ÂÊºÍÉúÑÄÅÅÃû²¿·Ö*/
+/*å³ä¸‹è§’èƒœç‡å’Œç”Ÿæ¶¯æ’åéƒ¨åˆ†*/
 .career-stat-heading {
     font-size: 15px;
     text-shadow: 2px 3px 2px #161414;
@@ -191,10 +203,26 @@ td{
 }
 
 
-/*×îÉÏ·½µÄĞÕÃû²¿·Ö*/
+/*æœ€ä¸Šæ–¹çš„å§“åéƒ¨åˆ†*/
 .player-info-heading {
     padding-bottom: 10px;
 }
 .middle-text{
     font-size: 20px;
+}
+
+
+/*å†å²è£èª‰å›¾ç‰‡ä¸æ–‡å­—éƒ¨åˆ†*/
+.history-honor {
+    position: relative;
+    display: inline-block;
+}
+
+.text-overlay {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 5px;
 }
