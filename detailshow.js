@@ -1,26 +1,26 @@
-//´ÓÓòÃûºó×º»ñÈ¡µ±Ç°rank
+//ä»åŸŸååç¼€è·å–å½“å‰rank
 function getQueryParam(param) {
     var searchParams = new URLSearchParams(window.location.search);
     return searchParams.get(param);
 }
 
-//¸üĞÂÏÔÊ¾Êı¾İ
+//æ›´æ–°æ˜¾ç¤ºæ•°æ®
 function dataUpdate() {
 
-    //IDÏà¹Ø
+    //IDç›¸å…³
     headName.textContent = data.members[rank].tfaName;
     document.getElementById('index').textContent = data.members[rank].tfaIndex;
 
-    //»ı·ÖÅÅÃûÏà¹Ø
+    //ç§¯åˆ†æ’åç›¸å…³
     document.getElementById('rank').textContent = '#' + data.members[rank].rank;
     document.getElementById('mmr').textContent = data.members[rank].currentMMR;
 
-    //ÈüÊÂÊı¾İÏà¹Ø
+    //èµ›äº‹æ•°æ®ç›¸å…³
     document.getElementById('tours').textContent = data.members[rank].showInfo.toursCount;
     document.getElementById('lastTour').textContent = data.members[rank].showInfo.lastTour;
     document.getElementById('lastStanding').textContent = data.members[rank].showInfo.lastTourRank;
 
-    //Ê¤ÂÊÏà¹Ø
+    //èƒœç‡ç›¸å…³
     matches.textContent = data.members[rank].totalMatches[0];
     wins.textContent = data.members[rank].totalWinMatches[0];
     document.getElementById('winRate').textContent = (Number(wins.textContent) / Number(matches.textContent) * 100).toFixed(2) + '%';
@@ -29,9 +29,9 @@ function dataUpdate() {
 
 
 var data;
-var rank = getQueryParam('rank') - 1; // »ñÈ¡rank²ÎÊı
+var rank = getQueryParam('rank') - 1; // è·å–rankå‚æ•°
 
-//»ñÈ¡Ò³Ãæ²¼¾ÖÔªËØid
+//è·å–é¡µé¢å¸ƒå±€å…ƒç´ id
 var headName = document.getElementById('name');
 var matches = document.getElementById('matches');
 var wins = document.getElementById('wins');
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
     fetch('data.json')
         .then(response => {
             if (response.ok) {
-                return response.json(); // ½«ÏìÓ¦×ª»»ÎªJSON
+                return response.json(); // å°†å“åº”è½¬æ¢ä¸ºJSON
             }
             throw new Error('Network response was not ok.');
         })
@@ -53,26 +53,26 @@ document.addEventListener('DOMContentLoaded', function () {
             data = jsonData;
             var player = data.members[rank];
 
-            //´¦ÀíÈüÊÂ¼ÇÂ¼
+            //å¤„ç†èµ›äº‹è®°å½•
             player.showInfo.historyResult.forEach(function (item) {
-                var row = tableTour.insertRow(-1); // ÔÚ±í¸ñÄ©Î²Ìí¼ÓĞÂĞĞ
-                var cell1 = row.insertCell(0); // ±ÈÈüÃû´Î
-                var cell2 = row.insertCell(1); // ÈüÊÂÃû³Æ
-                var cell3 = row.insertCell(2); // ¶ÔÊÖID
-                var cell4 = row.insertCell(3); // ±È·Ö
+                var row = tableTour.insertRow(-1); // åœ¨è¡¨æ ¼æœ«å°¾æ·»åŠ æ–°è¡Œ
+                var cell1 = row.insertCell(0); // æ¯”èµ›åæ¬¡
+                var cell2 = row.insertCell(1); // èµ›äº‹åç§°
+                var cell3 = row.insertCell(2); // å¯¹æ‰‹ID
+                var cell4 = row.insertCell(3); // æ¯”åˆ†
                 cell1.textContent = item.standing;
                 switch (item.standing) {
                     case 1:
                         cell1.style.backgroundColor = "#CD7F32";
-                        console.log(item.standing + "½ğÉ«");
+                        console.log(item.standing + "é‡‘è‰²");
                         break;
                     case 2:
                         cell1.style.backgroundColor = "#E6E8FA";
-                        console.log(item.standing + "ÒøÉ«");
+                        console.log(item.standing + "é“¶è‰²");
                         break;
                     case 3:
                         cell1.style.backgroundColor = "#8C7853";
-                        console.log(item.standing + "Í­É«");
+                        console.log(item.standing + "é“œè‰²");
                         break;
                 }
                 cell2.textContent = item.tour;
@@ -81,12 +81,12 @@ document.addEventListener('DOMContentLoaded', function () {
             });
 
 
-            //´¦Àí½»ÊÖ¼ÇÂ¼
+            //å¤„ç†äº¤æ‰‹è®°å½•
             player.showInfo.ada.forEach(function (item) {
-                var row2 = tableVersus.insertRow(-1); // ÔÚ±í¸ñÄ©Î²Ìí¼ÓĞÂĞĞ
-                var cell21 = row2.insertCell(0); // ¶ÔÊÖÃû³Æ
-                var cell22 = row2.insertCell(1); // ¶Ô¾Ö
-                var cell23 = row2.insertCell(2); // Ê¤ÂÊ
+                var row2 = tableVersus.insertRow(-1); // åœ¨è¡¨æ ¼æœ«å°¾æ·»åŠ æ–°è¡Œ
+                var cell21 = row2.insertCell(0); // å¯¹æ‰‹åç§°
+                var cell22 = row2.insertCell(1); // å¯¹å±€
+                var cell23 = row2.insertCell(2); // èƒœç‡
 
                 cell21.innerHTML = " VS " + '<span class="scheduled-game">' + item.tfaName + '</span>';
                 cell22.textContent = item.totalWinRound + "-" + (Number(item.totalRound) - Number(item.totalWinRound));
@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
 
-            //´¦ÀíÀúÊ·ÈÙÓş
+            //å¤„ç†å†å²è£èª‰
             var honorKV = player.showInfo.honor;
             if (Object.keys(honorKV).length > 0) {
                 /*for (var key in honorKV) {
@@ -129,29 +129,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
             }
 
-            //´¦ÀíÍ¼±íÏà¹Ø
+            //å¤„ç†å›¾è¡¨ç›¸å…³
             google.charts.load('current', { 'packages': ['corechart'] });
             google.charts.setOnLoadCallback(drawChart);
             function drawChart() {
                 var chartData = new google.visualization.DataTable();
 
-                // ½âÎöJSONÊı¾İÌî³äDataTable
+                // è§£æJSONæ•°æ®å¡«å……DataTable
                 //var jsonObject = JSON.parse(jsonData);
                 chartData.addColumn('string', 'Tournament');
                 chartData.addColumn('number', 'MMR');
                 chartData.addColumn({ type: 'string', role: 'annotation'});
                 chartData.addColumn({ type: 'string', role: 'annotation'});
-                chartData.addRow(["³õÊ¼", 1500, '1500','']);
+                chartData.addRow(["åˆå§‹", 1500, '1500','']);
                 for (var i = player.historyMMR.length; i > 0; i--) {
-                    var join = (player.historyIn[i - 1]) ? '²ÎÈü' : '';
+                    var join = (player.historyIn[i - 1]) ? 'å‚èµ›' : '';
                     chartData.addRow([data.tournaments[i - 1].desc, player.historyMMR[i - 1], String(player.historyMMR[i - 1]), join]);
                 }
 
                 var options = {
-                    title: '»ı·Ö±ä»¯ÇúÏß',
+                    title: 'ç§¯åˆ†å˜åŒ–æ›²çº¿',
                     hAxis: {
                         slantedText: false,
-                        title: 'ÈüÊÂ', titleTextStyle: {
+                        title: 'èµ›äº‹', titleTextStyle: {
                             color: 'red'
                         },
                         textStyle: {
@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             //format: '#####,####'
                         }
                     },
-                    vAxis: { title: '»ı·Ö', titleTextStyle: { color: 'red' } },
+                    vAxis: { title: 'ç§¯åˆ†', titleTextStyle: { color: 'red' } },
                     tooltip: {
                         text: 'X: %{x}, Y: %{y}',
                         trigger: 'both',
@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 chart.draw(chartData, options);
             };
 
-            //¸üĞÂÊı¾İÏÔÊ¾
+            //æ›´æ–°æ•°æ®æ˜¾ç¤º
             dataUpdate();
         })
         .catch(error => {
@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-//²åÈëÍ¼Æ¬µÄ·½·¨
+//æ’å…¥å›¾ç‰‡çš„æ–¹æ³•
 function insertImageWithText(imageSrc, text) {
     const container = document.createElement('div');
     container.className = 'image-container';
