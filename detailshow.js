@@ -106,27 +106,25 @@ document.addEventListener('DOMContentLoaded', function () {
             //处理历史荣誉
             var honorKV = player.showInfo.honor;
             if (Object.keys(honorKV).length > 0) {
-                /*for (var key in honorKV) {
+                const container = document.getElementById('images');
+                for (var key in honorKV) {
                     if (honorKV.hasOwnProperty(key)) {
-                        insertImageWithText('/img/rank'+honorKV[key]+'.png', key)
+                        //insertImageWithText('/img/rank'+honorKV[key]+'.png', key)
+                        const div = document.createElement('div');
+                        div.className = 'image-container';
+
+                        const img = document.createElement('img');
+                        img.src = '/img/rank' + honorKV[key] + '.png';
+                        div.appendChild(img);
+
+                        const span = document.createElement('span');
+                        span.className = 'text-overlay';
+                        span.textContent = key;
+                        div.appendChild(span);
+
+                        container.appendChild(div);
                     }
-                }*/
-                honorKV.forEach(({ src, text }) => {
-                    const div = document.createElement('div');
-                    div.className = 'image-container';
-
-                    const img = document.createElement('img');
-                    img.src = src;
-                    div.appendChild(img);
-
-                    const span = document.createElement('span');
-                    span.className = 'text-overlay';
-                    span.textContent = text;
-                    div.appendChild(span);
-
-                    container.appendChild(div);
-                });
-
+                }
             }
 
             //处理图表相关
