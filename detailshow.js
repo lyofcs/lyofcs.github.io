@@ -105,14 +105,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
             //处理历史荣誉
             console.log("aaaaaaaa" + player.showInfo.honor.length);
-            var keyValueCount = Object.keys(player.showInfo.honor).length;
-            if (keyValueCount > 0) {
+            var honorKV = player.showInfo.honor;
+            if (Object.keys(honorKV).length > 0) {
                 console.log("ASAAAA");
-                player.showInfo.honor.forEach(function (imageSrc) {
-                    var img = document.createElement('img');
-                    img.src = 'logo.png';
-                    container.appendChild(img);
-                });
+                for (var key in honorKV) {
+                    if (honorKV.hasOwnProperty(key)) {
+                        var img = document.createElement('img');
+                        img.src = 'logo.png';
+                        container.appendChild(img);
+                        console.log(key + ':' + honorKV[key]);
+                    }
+                }
             }
 
             //处理图表相关
