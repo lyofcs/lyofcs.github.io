@@ -105,7 +105,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
             //处理历史荣誉
             console.log("aaaaaaaa" + player.showInfo.honor.length);
-            if (player.showInfo.honor.length > 0) {
+            var keyValueCount = Object.keys(player.showInfo.honor).length;
+            if (keyValueCount > 0) {
                 console.log("ASAAAA");
                 player.showInfo.honor.forEach(function (imageSrc) {
                     var img = document.createElement('img');
