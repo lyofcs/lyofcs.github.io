@@ -104,14 +104,14 @@ document.addEventListener('DOMContentLoaded', function () {
             });
 
             //处理历史荣誉
-            /*var honorKV = player.showInfo.honor;
+            var honorKV = player.showInfo.honor;
             if (Object.keys(honorKV).length > 0) {
                 for (var key in honorKV) {
                     if (honorKV.hasOwnProperty(key)) {
-                        insertImageWithText('path/to/image.jpg', key)
+                        insertImageWithText('/img/rank'+honorKV[key]+'.png', key)
                     }
                 }
-            }*/
+            }
 
             //处理图表相关
             google.charts.load('current', { 'packages': ['corechart'] });
@@ -182,7 +182,7 @@ function insertImageWithText(imageSrc, text) {
     textDiv.textContent = text;
     container.appendChild(textDiv);
 
-    document.getElementById('image-gallery').appendChild(container);
+    document.getElementById('history-honor').appendChild(container);
 }
 
 /*console.log(jsonData);
