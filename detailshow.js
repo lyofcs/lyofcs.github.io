@@ -96,27 +96,22 @@ document.addEventListener('DOMContentLoaded', function () {
                 cell23.textContent = rate.toFixed(2) + '%';
 
                 if (rate > 50) {
-                    row2.style.color = "green";
+                    cell23.style.color = "green";
                 }
                 else if (rate < 50) {
-                    row2.style.color = "red";
+                    cell23.style.color = "red";
                 }
             });
 
             //处理历史荣誉
-            console.log("aaaaaaaa" + player.showInfo.honor.length);
-            var honorKV = player.showInfo.honor;
+            /*var honorKV = player.showInfo.honor;
             if (Object.keys(honorKV).length > 0) {
-                console.log("ASAAAA");
                 for (var key in honorKV) {
                     if (honorKV.hasOwnProperty(key)) {
-                        var img = document.createElement('img');
-                        img.src = 'logo.png';
-                        container.appendChild(img);
-                        console.log(key + ':' + honorKV[key]);
+                        insertImageWithText('path/to/image.jpg', key)
                     }
                 }
-            }
+            }*/
 
             //处理图表相关
             google.charts.load('current', { 'packages': ['corechart'] });
@@ -172,7 +167,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
+//插入图片的方法
+function insertImageWithText(imageSrc, text) {
+    const container = document.createElement('div');
+    container.className = 'image-container';
 
+    const img = document.createElement('img');
+    img.src = imageSrc;
+    img.alt = text;
+    container.appendChild(img);
+
+    const textDiv = document.createElement('div');
+    textDiv.className = 'text-overlay';
+    textDiv.textContent = text;
+    container.appendChild(textDiv);
+
+    document.getElementById('image-gallery').appendChild(container);
+}
 
 /*console.log(jsonData);
 
