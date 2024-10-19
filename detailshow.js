@@ -39,7 +39,7 @@ var wins = document.getElementById('wins');
 var tableTour = document.querySelector('#tourTable > tbody');
 var tableVersus = document.querySelector('#rivalTable > tbody');
 
-var container = document.getElementById('history-honor');
+//var container = document.getElementById('history-honor');
 
 document.addEventListener('DOMContentLoaded', function () {
     fetch('data.json')
@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function () {
             //处理历史荣誉
             var honorKV = player.showInfo.honor;
             if (Object.keys(honorKV).length > 0) {
-                const container = document.getElementById('images');
+                const container = document.getElementById('history-honor');
                 for (var key in honorKV) {
                     if (honorKV.hasOwnProperty(key)) {
                         //insertImageWithText('/img/rank'+honorKV[key]+'.png', key)
