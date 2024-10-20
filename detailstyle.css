@@ -214,6 +214,7 @@ td{
 
 /*历史荣誉图片与文字部分*/
 .image-container {
+    padding-top:20px;
     position: relative;
     display: inline-block;
 }
