@@ -5,6 +5,12 @@
     font-family: Helvetica, Arial, sans-serif;
 }
 
+.leaderboard-parent{
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+
 body {
     background: #232323;
 }
@@ -30,7 +36,7 @@ input[type=text], textarea, input[type=email], input[type=password], input[type=
 /* /end Codepen Specific */
 /* Ladder Navigation */
 #leaderboard {
-    padding: 50px;
+    padding: 5px;
 }
 
 .ladder-nav {
