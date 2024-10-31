@@ -43,7 +43,7 @@ fetch('data.json')
         //var jsonString = JSON.stringify(jsonData);
         //localStorage.setItem("members", jsonString);
         var name = document.getElementById('title-name');
-        name.textContent = "天格会积分排行榜-SF6 更新于" + jsonData.tournaments[0].desc + "之后";
+        name.textContent = "开发中！天格会积分排行榜-SF6 更新于" + jsonData.tournaments[0].desc + "之后";
 
         jsonData.members.forEach(function (player, index) {
             var row = table.insertRow(-1); // 在表格末尾添加新行
