@@ -1,0 +1,103 @@
+﻿@ -1,101 +0,0 @@
+﻿
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700" rel="stylesheet">
+    <link rel="stylesheet" href="css/style_detail.css">
+    <link rel="stylesheet" href="css/style_detail_paging.css">
+    <script type="text/javascript" src="js/loader.js"></script>
+    <script type="text/javascript" src="js/script_detail_paging.js"></script>
+    <title>详细信息</title>
+</head>
+<body>
+    <div class="container">
+        <div class="section">
+            <div class="info-section">
+                <div class="page-controls" id="page-controls">
+                    <button id="prev-page" disabled>前一页</button>
+                    <input type="number" id="goto-page" min="1" placeholder="跳转到页面">
+                    <button id="goto-btn">Go</button>
+                    <button id="next-page">后一页</button>
+                </div>
+            </div>
+            <h2 class="info-container">基础信息</h2>
+            <ul class="info-list">
+                <li id="index" class="tfa-index"></li>
+                <li id="name" class="tfa-name"></li>
+                <li class="info-item">
+                    <span class="item-name">比赛场数</span>
+                    <span class="item-text" id="matches">波动拳之类的</span>
+                </li>
+                <li class="info-item">
+                    <span class="item-name">比赛胜场</span>
+                    <span class="item-text" id="wins">波动拳之类的</span>
+                </li>
+                <li class="info-item">
+                    <span class="item-name">比赛胜率</span>
+                    <span class="item-text" id="winRate">波动拳之类的</span>
+                </li>
+                <li class="info-item">
+                    <span class="item-name">参赛次数</span>
+                    <span class="item-text" id="tours">波动拳之类的</span>
+                </li>
+                <li class="info-item">
+                    <span class="item-name">上次参赛</span>
+                    <span class="item-text" id="lastTour">波动拳之类的</span>
+                </li>
+                <li class="info-item">
+                    <span class="item-name">上次名次</span>
+                    <span class="item-text" id="lastStanding">波动拳之类的</span>
+                </li>
+            </ul>
+
+        </div>
+
+        <div class="section" id="history-honor">
+            <h2>历史荣誉</h2>
+        </div>
+
+
+        <div class="section">
+            <h2>参赛记录</h2>
+            <table class="tour-table" id="tourTable">
+                <tr>
+                    <th>时间</th>
+                    <th>成绩</th>
+                    <th>赛事</th>
+                    <th>最后之敌</th>
+                    <th>比分</th>
+                </tr>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>积分变化</h2>
+            <div id="chart-area">
+                <div id="donutchart">
+                    <!-- 替换为实际积分曲线图链接 -->
+                </div>
+            </div>
+        </div>
+
+        <div class="section_rival">
+            <h2>交手记录</h2>
+            <table class="record-table" id="rivalTable">
+                <tr>
+                    <th>对手</th>
+                    <th>交手次数</th>
+                    <th>胜率</th>
+                </tr>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</body>
+</html>
+<script src="js/script_detail.js"></script>
