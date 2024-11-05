@@ -1,0 +1,110 @@
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    .asd {
+        font-size: 100px;
+    }
+    .tab-container {
+        position: fixed;
+        max-width: 720px;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: space-around;
+        background-color: #f0f0f0;
+        padding: 10px;
+        border-bottom: 2px solid #ccc;
+        z-index: 1000; /* 确保标签在其他内容之上
+    }
+
+    /*.tab-container {
+        position: fixed; /* 固定在页面顶部 
+        max-width: 720px;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: space-around;
+        background-color: #f0f0f0;
+        padding: 10px;
+        border-bottom: 2px solid #ccc;
+        z-index: 1000; /* 确保标签在其他内容之上
+    }*/
+
+
+        .tab {
+        text-decoration: none;
+        color: #343a40; /* 深灰色文字 */
+        padding: 10px 20px;
+        flex-grow: 1;
+        text-align: center;
+    }
+
+        .tab.active {
+            background-color: #ffffff; /* 白色背景表示激活状态 */
+            border-bottom: 2px solid #007bff; /* 蓝色下边框表示激活状态 */
+            color: #007bff; /* 激活状态下的文字颜色 */
+        }
+
+        .tab:hover {
+            background-color: #e9ecef; /* 悬停时的背景色 */
+        }
+
+    .content {
+        margin-top: 60px; /* 为内容区域留出标签页的空间 */
+        padding: 20px;
+    }
+
+    .tab-content {
+        display: none; /* 默认隐藏所有内容 */
+    }
+
+        .tab-content.active {
+            display: block; /* 显示激活的内容 */
+        }
+</style>
+
+<div class="tab-container">
+    <a href="#tab1" class="tab active">DRIVESYSTEM</a>
+    <a href="#tab2" class="tab">CONTROL TYPE</a>
+    <a href="#tab3" class="tab">REAL TIME COMMENTARY</a>
+    <a href="#tab4" class="tab">SOUND ACCESSIBILITY</a>
+</div>
+
+<!-- 内容区域，可以滚动 -->
+<div class="content">
+    <!-- 这里放置大量内容，以便产生滚动条 -->
+    <div id="tab1" class="tab-content">Content for DRIVESYSTEM</div>
+    <div id="tab2" class="tab-content">Content for CONTROL TYPE</div>
+    <div id="tab3" class="tab-content">Content for REAL TIME COMMENTARY</div>
+    <div id="tab4" class="tab-content">Content for SOUND ACCESSIBILITY</div>
+    <span class="asd">11111111111111asd</span>
+    <span class="asd">11111111111111asd</span>
+    <span class="asd">11111111111111asd</span>
+    <span class="asd">11111111111111asd</span>
+    <span class="asd">11111111111111asd</span>
+    <span class="asd">11111111111111asd</span>
+    <span class="asd">11111111111111asd</span>
+    <span class="asd">11111111111111asd</span>
+    <span class="asd">11111111111111asd</span>
+    <span class="asd">11111111111111asd</span>
+    <span class="asd">11111111111111asd</span>
+    <span class="asd">11111111111111asd</span>
+    <span class="asd">11111111111111asd</span>
+    <span class="asd">11111111111111asd</span>
+    <span class="asd">11111111111111asd</span>
+    <span class="asd">11111111111111asd</span>
+    <span class="asd">11111111111111asd</span>
+    <span class="asd">11111111111111asd</span>
+    <span class="asd">11111111111111asd</span>
+    <span class="asd">11111111111111asd</span>
+
+    <span class="asd">11111111111111asd</span>
+    <span class="asd">11111111111111asd</span>
+    <span class="asd">11111111111111asd</span>
+    <span class="asd">11111111111111asd</span>
+</div>

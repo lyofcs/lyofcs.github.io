@@ -1,6 +1,4 @@
-﻿@ -1,101 +0,0 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -8,11 +6,19 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:700" rel="stylesheet">
     <link rel="stylesheet" href="css/style_detail.css">
     <link rel="stylesheet" href="css/style_detail_paging.css">
+    <link rel="stylesheet" href="css/style_tab.css">
     <script type="text/javascript" src="js/loader.js"></script>
     <script type="text/javascript" src="js/script_detail_paging.js"></script>
     <title>详细信息</title>
 </head>
 <body>
+    <div class="tab-section">
+        <div class="tab-container">
+            <a href="/index.html" class="tab" data-tab="tab1">积分榜</a>
+            <a href="/detail.html" class="tab" data-tab="tab2">详细信息</a>
+            <a href="/tournaments.html" class="tab" data-tab="tab3">赛事信息</a>
+        </div>
+    </div>
     <div class="container">
         <div class="section">
             <div class="info-section">
@@ -27,32 +33,45 @@
             <ul class="info-list">
                 <li id="index" class="tfa-index"></li>
                 <li id="name" class="tfa-name"></li>
-                <li class="info-item">
-                    <span class="item-name">比赛场数</span>
-                    <span class="item-text" id="matches">波动拳之类的</span>
-                </li>
-                <li class="info-item">
-                    <span class="item-name">比赛胜场</span>
-                    <span class="item-text" id="wins">波动拳之类的</span>
-                </li>
-                <li class="info-item">
-                    <span class="item-name">比赛胜率</span>
-                    <span class="item-text" id="winRate">波动拳之类的</span>
-                </li>
-                <li class="info-item">
-                    <span class="item-name">参赛次数</span>
-                    <span class="item-text" id="tours">波动拳之类的</span>
-                </li>
-                <li class="info-item">
-                    <span class="item-name">上次参赛</span>
-                    <span class="item-text" id="lastTour">波动拳之类的</span>
-                </li>
-                <li class="info-item">
-                    <span class="item-name">上次名次</span>
-                    <span class="item-text" id="lastStanding">波动拳之类的</span>
-                </li>
             </ul>
-
+            <div class="info-area">
+                <ul class="info-list left-info">
+                    <li class="info-item">
+                        <span class="item-name">比赛场数</span>
+                        <span class="item-text" id="matches"></span>
+                    </li>
+                    <li class="info-item">
+                        <span class="item-name">比赛胜场</span>
+                        <span class="item-text" id="wins"></span>
+                    </li>
+                    <li class="info-item">
+                        <span class="item-name">比赛胜率</span>
+                        <span class="item-text" id="winRate"></span>
+                    </li>
+                    <li class="info-item">
+                        <span class="item-name">参赛次数</span>
+                        <span class="item-text" id="tours"></span>
+                    </li>
+                    <li class="info-item">
+                        <span class="item-name">上次参赛</span>
+                        <span class="item-text" id="lastTour"></span>
+                    </li>
+                    <li class="info-item">
+                        <span class="item-name">上次名次</span>
+                        <span class="item-text" id="lastStanding"></span>
+                    </li>
+                </ul>
+                <ul class="info-list right-info">
+                    <li class="info-rank">
+                        <span class="rank-name">当前排名</span>
+                        <span class="rank-text" id="rank">#1</span>
+                    </li>
+                    <li class="info-rank">
+                        <span class="rank-name">当前积分</span>
+                        <span class="rank-text" id="mmr">1800</span>
+                    </li>
+                </ul>
+            </div>
         </div>
 
         <div class="section" id="history-honor">

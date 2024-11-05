@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         console.log(item.standing + "金色");
                         break;
                     case 2:
-                        cell1.style.backgroundColor = "#E6E8FA";
+                        cell1.style.backgroundColor = "#BBB";
                         console.log(item.standing + "银色");
                         break;
                     case 3:
@@ -218,7 +218,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     pointShape: 'circle',
                     pointGlowColor: 'red', // 设置点的发光颜色
                     pointGlowSize: 5, // 设置点的发光大小
-                    lineWidth: 5,
+                    lineWidth: 2,
                     shadow: true,
                     /*title: '积分变化曲线',*/
                     backgroundColor: {
@@ -254,7 +254,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         maxValue: 1800,
                         gridlines: {
                             count: 5,
-                            color:'yellow',
+                            color:'pink',
                         },
                         minorGridlines: {
                             count:0,
@@ -283,7 +283,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     width: chartWidth,
                     height: 350,
                     legend: 'none',
-                    series: [{ color: 'purple' }]
+                    series: [{ color: '#8eff9a' }]
 
                 };
 

@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>天格会积分排行榜</title>
-        <link rel="stylesheet" href="css/style.css">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天格会积分排行榜</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style_tab.css">
+</head>
     <body>
+        <div class="tab-section">
+            <div class="tab-container">
+                <a href="/index.html" class="tab" data-tab="tab1">积分榜</a>
+                <a href="/detail.html" class="tab" data-tab="tab2">详细信息</a>
+                <a href="/tournaments.html" class="tab" data-tab="tab3">赛事信息</a>
+            </div>
+        </div>
         <section id="leaderboard" class="leaderboard-parent">
             <nav class="ladder-nav">
                 <div class="ladder-title">

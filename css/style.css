@@ -3,16 +3,21 @@
     margin: 0;
     padding: 0;
     font-family: Helvetica, Arial, sans-serif;
+    box-sizing: border-box;
 }
 
 .leaderboard-parent {
     max-width: 720px;
     margin: 0 auto;
+    padding: 10px 5px 5px 5px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 
 body {
     background: #232323;
+    padding: 10px;
 }
 
 input[type=text], textarea, input[type=email], input[type=password], input[type=tel], input[type=url], input[type=search], input[type=date] {
@@ -46,7 +51,10 @@ input[type=text], textarea, input[type=email], input[type=password], input[type=
     background: #5055CB;
     padding: 10px 25px;
     border-radius: 10px;
-    border: 1px solid #686EF9;
+
+    line-height: 1;
+    background: linear-gradient(90deg, #420862, #24007f 25%, #24007f 50%, #24007f 75%, #420862);
+    border: 1px solid #9636b2;
 }
 
 .ladder-title {
@@ -55,7 +63,8 @@ input[type=text], textarea, input[type=email], input[type=password], input[type=
 
 .ladder-search {
     flex: 1;
-    padding-right: 25px;
+    padding-left:5px;
+    padding-right: 5px;
 }
 
 .ladder-title {
@@ -99,9 +108,10 @@ input[type=text], textarea, input[type=email], input[type=password], input[type=
     }
 
     .leaderboard-results tbody td {
-        padding: 5px 5px;
+        line-height:2px;
+        padding: 15px 25px;
         background: #1a1a1a;
-        font-size: 16px;
+
         border-bottom: 5px solid #232323;
     }
 
@@ -118,10 +128,12 @@ input[type=text], textarea, input[type=email], input[type=password], input[type=
     }
 
         .leaderboard-results tbody tr:first-child {
+            font-size:20px;
             color: #CD7F32;
         }
 
         .leaderboard-results tbody tr:nth-child(2) {
+            font-size: 18px;
             color: #E6E8FA;
         }
 

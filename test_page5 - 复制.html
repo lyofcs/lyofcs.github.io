@@ -1,0 +1,155 @@
+<style>
+    .container {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 10px 5px 5px 5px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .section {
+        margin-bottom: 20px;
+        padding: 10px;
+        border-radius: 5px;
+        /*background-color: #333; /* 灰色内容区域背景 */
+        width: 100%;
+        /*background: #1c1821;
+            background: linear-gradient(325deg,#1c1821,#9500db 50%,#1c1821);*/
+        /*height:2px;*/
+        background: url(/img/sf6_back2.jpg) no-repeat;
+        background-attachment: fixed;
+        z-index: 10;
+        overflow-x: auto; /* 允许水平滚动 */
+        white-space: nowrap; /* 防止内容换行 */
+    }
+
+    .info-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        width: 100%; /* 父元素的宽度 */
+        position: relative; /* 如果子元素需要绝对定位，则保留此行；否则可以删除 */
+    }
+
+    .info-list {
+        position: relative;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+    }
+
+    .info-item {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .item-name {
+        width: min(19.556714472vw, 150px);
+        margin: 0 min(.6518904824vw, 5px) min(1.3037809648vw, 10px) 0;
+        padding: min(.260756193vw, 2px) min(1.3037809648vw, 10px);
+        font-size: min(2.6075619296vw, 20px);
+        display: block;
+        border-left: 1px solid hsla(0, 0%, 100%, .6);
+        background: #000;
+        box-sizing: border-box;
+        color: #bb82ff;
+        text-align: right;
+        line-height: 1.2;
+    }
+
+    .item-text {
+        margin: 0 0 min(1.3037809648vw, 10px);
+        padding: min(.260756193vw, 2px) min(1.3037809648vw, 10px);
+        font-size: min(2.3468057366vw, 18px);
+        display: block;
+        background: #000;
+        box-sizing: border-box;
+        color: #fff;
+        text-align: left;
+    }
+
+    .tfa-name {
+        text-shadow: 2px 3px 2px #161414;
+        text-shadow: 0 0 10px #99208d, 0 0 20px #99208d, 0 0 20px #99208d, 0 0 20px #99208d, 0 0 20px #99208d;
+        font-size: 60px;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .tfa-index {
+        text-shadow: 2px 3px 2px #161414;
+        font-size: 20px;
+        font-family: 'Montserrat', sans-serif;
+        color: #9f9696;
+    }
+
+    .info-container {
+        position: relative;
+        width: 100%;
+        box-sizing: border-box;
+        text-align: left;
+        line-height: 1;
+        border-bottom: 1px solid #fff;
+        padding-bottom: 10px; /* 可根据需要调整，确保方块不紧贴边框 */
+    }
+
+        .info-container::before,
+        .info-container::after {
+            content: '';
+            position: absolute;
+            bottom: -2.5px; /* 调整此值使方块与边框底部对齐 */
+            width: 5px; /* 方块宽度，可根据需要调整 */
+            height: 5px; /* 方块高度，可根据需要调整 */
+            background-color: #fff;
+            right: 0;
+        }
+
+        .info-container::before {
+            left: 0;
+        }
+
+</style>
+<div class="container">
+    <div class="section">
+        <div class="info-section">
+            <div class="page-controls" id="page-controls">
+                <button id="prev-page" disabled>前一页</button>
+                <input type="number" id="goto-page" min="1" placeholder="跳转到页面">
+                <button id="goto-btn">Go</button>
+                <button id="next-page">后一页</button>
+            </div>
+        </div>
+        <h2 class="info-container">基础信息</h2>
+        <ul class="info-list ">
+            <li id="index" class="tfa-index"></li>
+            <li id="name" class="tfa-name"></li>
+            <li class="info-item">
+                <span class="item-name">比赛场数</span>
+                <span class="item-text" id="matches"></span>
+            </li>
+            <li class="info-item">
+                <span class="item-name">比赛胜场</span>
+                <span class="item-text" id="wins"></span>
+            </li>
+            <li class="info-item">
+                <span class="item-name">比赛胜率</span>
+                <span class="item-text" id="winRate"></span>
+            </li>
+            <li class="info-item">
+                <span class="item-name">参赛次数</span>
+                <span class="item-text" id="tours"></span>
+            </li>
+            <li class="info-item">
+                <span class="item-name">上次参赛</span>
+                <span class="item-text" id="lastTour"></span>
+            </li>
+            <li class="info-item">
+                <span class="item-name">上次名次</span>
+                <span class="item-text" id="lastStanding"></span>
+            </li>
+        </ul>
+
+    </div>
+</div>

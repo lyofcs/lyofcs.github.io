@@ -15,8 +15,8 @@ body {
 .container {
     max-width: 720px;
     margin: 0 auto;
-    background-color: #222; /* 更深的灰色背景 */
-    padding: 5px;
+
+    padding: 10px 5px 5px 5px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
@@ -31,6 +31,7 @@ h1 {
 
 
 .section {
+
     margin-bottom: 20px;
     padding: 10px;
     border-radius: 5px;
@@ -74,6 +75,20 @@ h1 {
     border: 2px solid #ff6347; /* 红色边框 */
 }
 
+
+.info-area {
+    display: flex;
+    justify-content: space-between; /* 这将使两列之间的空间均匀分布 */
+    align-items: flex-start; /* 这将使内容在垂直方向上对齐到顶部（可选） */
+}
+
+.info-rank {
+
+    color:#ff6347;
+    text-align:right;
+}
+
+
 .info-list {
     position: relative;
     margin: 0;
@@ -83,12 +98,51 @@ h1 {
     font: inherit;
     vertical-align: baseline;
 }
+    .info-list left-info {
+        text-align: left;
+    }
+    .info-list right-info {
+        text-align: right;
+    }
 
-.info-item{
-    display:flex;
-    flex-wrap:wrap;
+.info-rank {
+    margin: 5px 25px 5px 25px;
+    width: min(25vw, 240px);
+    height: min(12vw,auto);
+    font-size: min(2.6075619296vw, 20px);
 
+    background: #32046f;
+    border: 3px solid #331167;
+    border-image: linear-gradient(180deg, #4c2ea5 0, #331167 50%, #4c2ea5);
+    border-image-slice: 1;
+    padding: min(1.6604166667vw, 25px);
+    display: block;
+    text-align:center;
+    align-items: stretch;
+    box-shadow: 0 0 15px -5px #5a1dbb;
+    border-radius: 10px;
 }
+
+.rank-name {
+    display: block;
+}
+
+.rank-text {
+    font-size: 40px;
+    color: #ecfb01;
+    background-color: #ff0000;
+    border-radius: 0px;
+    text-transform: uppercase;
+    text-align: center;
+    text-shadow: 2px 3px 2px #161414;
+    padding-bottom: 37px;
+}
+
+
+    .info-item {
+        display: flex;
+        flex-wrap: wrap;
+    }
 .item-name {
     width: min(19.556714472vw, 150px);
     margin: 0 min(.6518904824vw, 5px) min(1.3037809648vw, 10px) 0;
@@ -297,49 +351,6 @@ h1 {
 #donutchart {
     display: inline-block; /* 使图表成为内联块元素，以便可以水平滚动 */
 }
-
-
-/*滚动条部分*/
-/* 所有浏览器的默认滚动条样式 */
-::-webkit-scrollbar {
-    width: 10px; /* 宽度 */
-    height:10px;
-}
-
-/* 滚动条轨道 */
-::-webkit-scrollbar-track {
-    background: #f1f1f1; /* 颜色 */
-}
-
-/* 滚动条的滑块 */
-::-webkit-scrollbar-thumb {
-    background: #888; /* 颜色 */
-}
-
-    /* 滚动条的滑块hover效果 */
-    ::-webkit-scrollbar-thumb:hover {
-        background: #555; /* 颜色 */
-    }
-
-/* Firefox */
-::-moz-scrollbar {
-    width: 10px; /* 宽度 */
-    height: 10px;
-}
-
-::-moz-scrollbar-thumb {
-    background: #888; /* 颜色 */
-}
-
-/* IE and Edge */
-::-ms-scrollbar {
-    width: 10px; /* 宽度 */
-}
-
-::-ms-scrollbar-thumb {
-    background: #888; /* 颜色 */
-}
-
 
 
 .test-text {
