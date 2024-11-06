@@ -23,9 +23,8 @@ function dataUpdate() {
     document.getElementById('index').textContent = data.members[rank].tfaIndex;
 
     //积分排名相关
-    //document.getElementById('rank').textContent = '#' + data.members[rank].rank;
-    //document.getElementById('mmr').textContent = data.members[rank].currentMMR;*/
-
+    document.getElementById('rank').textContent = '#' + data.members[rank].rank;
+    document.getElementById('mmr').textContent = data.members[rank].currentMMR;
     //赛事数据相关
     document.getElementById('tours').textContent = data.members[rank].showInfo.toursCount;
     document.getElementById('lastTour').textContent = data.members[rank].showInfo.lastTour;
@@ -96,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         break;
                 }
                 cell2.textContent = item.tour;
-                cell3.innerHTML = " VS " + '<span class="scheduled-game">' + item.rival + '</span>';
+                cell3.innerHTML = '<span class="vs-symbol">' + " VS " + '</span>'   + item.rival;
                 cell4.textContent = item.result;
             });
 
@@ -107,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 var cell22 = row2.insertCell(1); // 对局
                 var cell23 = row2.insertCell(2); // 胜率
 
-                cell21.innerHTML = " VS " + '<span class="scheduled-game">' + item.tfaName + '</span>';
+                cell21.innerHTML = '<span class="vs-symbol">' + " VS " + '</span>' + item.tfaName;
                 cell22.textContent = item.totalWinRound + "-" + (Number(item.totalRound) - Number(item.totalWinRound));
 
                 var rate = (Number(item.totalWinRound) / Number(item.totalRound) * 100);
@@ -124,8 +123,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
             //处理历史荣誉
             var honorKV = player.showInfo.honor;
+            const honor_list = document.getElementById('history-honor');
             if (Object.keys(honorKV).length > 0) {
-                const honor_list = document.getElementById('history-honor');
                 for (var key in honorKV) {
                     if (honorKV.hasOwnProperty(key)) {
                         //insertImageWithText('/img/rank'+honorKV[key]+'.png', key)
@@ -188,6 +187,10 @@ document.addEventListener('DOMContentLoaded', function () {
                         container.appendChild(div);*/
                     }
                 }
+
+            }
+            else {
+                honor_list.style.display = "none";
             }
 
             //处理图表相关

@@ -96,8 +96,11 @@ input[type=text], textarea, input[type=email], input[type=password], input[type=
 /* /end Ladder Navigation */
 /* Leaderboard Results */
 .leaderboard-results {
+    width: 100%;
     text-align: left;
     border-collapse: collapse;
+    word-wrap: break-word; /* 或使用 overflow-wrap: break-word; */
+    table-layout: auto; /* 通常使用auto，但fixed在某些情况下也有用 */
 }
 
     .leaderboard-results thead th {
@@ -108,11 +111,11 @@ input[type=text], textarea, input[type=email], input[type=password], input[type=
     }
 
     .leaderboard-results tbody td {
-        line-height:2px;
-        padding: 15px 25px;
+        width: auto;
+        padding: 10px min(2vw,25px);
         background: #1a1a1a;
-
         border-bottom: 5px solid #232323;
+        word-wrap: break-word; /* 确保长内容换行 */
     }
 
         .leaderboard-results tbody td:nth-of-type(7) {
@@ -125,15 +128,16 @@ input[type=text], textarea, input[type=email], input[type=password], input[type=
 
     .leaderboard-results tbody tr {
         color: #747474;
+        font-size:min(4vw,16px);
     }
 
         .leaderboard-results tbody tr:first-child {
-            font-size:20px;
+            font-size: min(5vw,20px);
             color: #CD7F32;
         }
 
         .leaderboard-results tbody tr:nth-child(2) {
-            font-size: 18px;
+            font-size: min(4.5vw,18px);
             color: #E6E8FA;
         }
 
