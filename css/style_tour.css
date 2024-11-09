@@ -88,6 +88,7 @@ body {
     border-collapse: collapse;
     margin-top: 10px;
     text-shadow: 0 0 10px #99208d, 0 0 10px #99208d, 0 0 10px #99208d, 0 0 10px #99208d, 0 0 10px #99208d;
+    white-space: normal;
 }
 
     .final-table th, .final-table td {

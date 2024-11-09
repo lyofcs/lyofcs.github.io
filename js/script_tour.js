@@ -38,7 +38,12 @@ let banlist = [];
 let panelCount = 0; // 用于生成唯一的收纳板ID
 
 function getKeyByValue(object, value) {
-    return Object.keys(object).filter(key => object[key] === value);
+    for (let key in object) {
+        if (object.hasOwnProperty(key) && object[key] === value) {
+            return key; // 找到第一个匹配的键后立即返回
+        }
+    }
+    return null; // 如果没有找到匹配的键，则返回null
 }
 
 function checkQualify(tour) {
