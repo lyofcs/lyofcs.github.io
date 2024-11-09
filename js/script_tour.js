@@ -11,6 +11,13 @@
             checkQualify(tour);
         });
 
+        for (const player of jsonData.members){
+            if (!banlist.includes(player.tfaName)) {
+                finalist[2].push(player.tfaName + "(暂)");
+                break;
+            }
+        };
+
         var ft = document.getElementById('final');
         var rows = ft.rows;
         for (i = 1; i <= 4; i++) {
@@ -136,11 +143,16 @@ function createAccordionPanel(tour) {
 
     const result = tour.result;
 
-    for (var key in result) {
+    const map = new Map(Object.entries(result));
+
+    let sortedMap = new Map([...map.entries()].sort((a, b) => a[1] - b[1]));
+    console.log(sortedMap);
+
+    for (const [key, value] of sortedMap) {
         var row = tbody.insertRow(-1);
         var cell1 = row.insertCell(0); // 当前名次
         var cell2 = row.insertCell(1); // 选手ID
-        cell1.textContent = result[key];
+        cell1.textContent = value;
         cell2.textContent = key;
     }
 
