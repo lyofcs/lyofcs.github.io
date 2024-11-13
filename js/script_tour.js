@@ -6,12 +6,12 @@
         throw new Error('Network response was not ok.');
     })
     .then(jsonData => {
-        jsonData.tournaments.forEach(function (tour) {
+        jsonData[0].tournaments.forEach(function (tour) {
             addAccordionPanel(tour);
             checkQualify(tour);
         });
 
-        for (const player of jsonData.members){
+        for (const player of jsonData[0].members){
             if (!banlist.includes(player.tfaName)) {
                 finalist[2].push(player.tfaName + "(暂)");
                 break;

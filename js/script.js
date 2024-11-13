@@ -43,9 +43,9 @@ fetch('/data/data.json')
         //var jsonString = JSON.stringify(jsonData);
         //localStorage.setItem("members", jsonString);
         var name = document.getElementById('title-name');
-        name.innerHTML = "天格会积分排行榜-SF6 V1.0" + "<br>更新于 " + jsonData.tournaments[0].desc + " 后";
+        name.innerHTML = "天格会积分排行榜-SF6 V1.0" + "<br>更新于 " + jsonData[0].tournaments[0].desc + " 后";
 
-        jsonData.members.forEach(function (player, index) {
+        jsonData[0].members.forEach(function (player, index) {
             var row = table.insertRow(-1); // 在表格末尾添加新行
             var cell1 = row.insertCell(0); // 当前名次
             var cell2 = row.insertCell(1); // 选手ID

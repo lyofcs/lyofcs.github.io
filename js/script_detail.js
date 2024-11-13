@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
             throw new Error('Network response was not ok.');
         })
         .then(jsonData => {
-            data = jsonData;
+            data = jsonData[0];
 
             rank = Math.min(Math.max(0, rank), data.members.length - 1);
 
