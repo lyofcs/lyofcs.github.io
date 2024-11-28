@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>活动生成图片</title>
+    <link rel="stylesheet" href="/css/style_actgen.css">
+</head>
+<body>
+    <div class="container">
+        <h1>活动信息输入</h1>
+        <form id="activityForm">
+            <div class="form-group">
+                <label for="activityName">活动名称:</label>
+                <input type="text" id="activityName" name="activityName" required>
+            </div>
+            <div class="form-group">
+                <label for="activityTime">时间:</label>
+                <input type="datetime-local" id="activityTime" name="activityTime" required>
+            </div>
+            <div class="form-group">
+                <label for="activityLocation">地点:</label>
+                <input type="text" id="activityLocation" name="activityLocation" required>
+            </div>
+            <div class="form-group">
+                <label for="activityRules">规则:</label>
+                <textarea id="activityRules" name="activityRules" required></textarea>
+            </div>
+            <button type="button" onclick="addActivity()">添加活动</button>
+        </form>
+
+        <div id="activityList" class="activity-list"></div>
+
+        <button id="downloadBtn">下载图片</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="/js/script_actgen.js"></script>
+</body>
+</html>
