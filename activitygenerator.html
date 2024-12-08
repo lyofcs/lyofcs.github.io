@@ -25,10 +25,7 @@
                 <label for="activityTime">时间:</label>
                 <input type="text" id="activityTime" name="activityTime" required>
             </div>
-            <div class="form-group">
-                <label for="activityLocation">地点:</label>
-                <input type="text" id="activityLocation" name="activityLocation" required>
-            </div>
+
             <div class="form-group">
                 <label for="activityRules">规则:</label>
                 <textarea id="activityRules" name="activityRules" required></textarea>
@@ -41,6 +38,7 @@
         </div>
 
         <button id="downloadBtn">下载图片</button>
+
     </div>
 
     <div id="colorPickerDialog" class="hidden">
@@ -52,6 +50,7 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dom-to-image@2.6.0/dist/dom-to-image.min.js"></script>
     <script src="/js/script_actgen.js"></script>
 </body>
 </html>

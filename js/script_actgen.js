@@ -1,8 +1,19 @@
 ﻿let activityIndex = 0;
 const activityBackgrounds = [
-    'url("/img/logo.png")', // 你可以替换成实际的图片URL
-    'url("/img/rank1.png")', // 你可以替换成实际的图片URL
+    'url("/img/actcard1.png")', // 你可以替换成实际的图片URL
+    'url("/img/actcard6.png")', // 你可以替换成实际的图片URL
+    'url("/img/actcard2.png")', // 你可以替换成实际的图片URL
+    'url("/img/actcard5.png")', // 你可以替换成实际的图片URL
+    'url("/img/actcard7.png")', // 你可以替换成实际的图片URL
     // ... 添加更多背景图片
+];
+
+const colorItems = [
+    'rgb(253, 21, 233)',
+    'rgb(11, 132, 244)',
+    'rgb(177, 42, 53)',
+    'rgb(156, 13, 237)',
+    'rgb(200,150,20)',
 ];
 
 
@@ -29,21 +40,37 @@ function addActivity() {
     const content = document.createElement('div');
     content.classList.add('content');
 
-    const activityName = document.createElement('h2');
+    const activityName = document.createElement('p');
+    activityName.classList.add('activity-content');
+    activityName.classList.add('activity-name')
     activityName.textContent = formData.get('activityName');
 
     const activityTime = document.createElement('p');
-    activityTime.textContent = `时间: ${formData.get('activityTime')}`;
+    activityTime.classList.add('activity-content');
+    activityTime.classList.add('activity-time');
 
-    const activityLocation = document.createElement('p');
-    activityLocation.textContent = `地点: ${formData.get('activityLocation')}`;
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    const randomColor = colorItems[activityIndex % activityBackgrounds.length];
+
+    activityTime.textContent = `时间: ${formData.get('activityTime')}`;
+    activityTime.style.color = randomColor;
+
+    /*const activityLocation = document.createElement('p');
+    activityLocation.classList.add('activity-content');
+    activityLocation.textContent = `地点: ${formData.get('activityLocation')}`;*/
 
     const activityRules = document.createElement('p');
-    activityRules.textContent = `规则: ${formData.get('activityRules')}`;
+    activityRules.classList.add('activity-content');
+    activityRules.classList.add('activity-desc');
+    const ar = document.getElementById('activityRules');
+    //activityRules.textContent = `规则: ${formData.get('activityRules')}`;
+    activityRules.textContent = ar.value.trim();
 
     content.appendChild(activityName);
     content.appendChild(activityTime);
-    content.appendChild(activityLocation);
+    //content.appendChild(activityLocation);
     content.appendChild(activityRules);
 
     activityCard.appendChild(content);
@@ -56,7 +83,7 @@ function addActivity() {
     activityIndex++;
 }
 
-document.getElementById('downloadBtn').addEventListener('click', function () {
+/*document.getElementById('downloadBtn').addEventListener('click', function () {
     const activityList = document.getElementById('activityList');
     html2canvas(activityList).then(canvas => {
         const link = document.createElement('a');
@@ -64,11 +91,30 @@ document.getElementById('downloadBtn').addEventListener('click', function () {
         link.download = 'activity_image.png';
         link.click();
     });
+});*/
+
+document.getElementById('downloadBtn').addEventListener('click', function () {
+    const node = document.getElementById('activityList');
+    domtoimage.toBlob(node)
+        .then(function (blob) {
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'my-image.png'; // 设置下载的文件名
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url); // 释放 URL 对象
+        })
+        .catch(function (error) {
+            console.error('Error occurred:', error);
+        });
 });
 
 
+
 // script.js
-document.addEventListener('DOMContentLoaded', function () {
+/*document.addEventListener('DOMContentLoaded', function () {
     const colorPickerButton = document.getElementById('colorPickerButton');
     const colorPicker = document.getElementById('colorPicker');
     const colorInput = document.getElementById('colorInput');
@@ -137,7 +183,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (!colorPickerDialog.contains(dialogClickEvent.target) && !isApplyingChanges) {
                     handleDialogClose();
                 }
-            }, { once: true }); // 使用{ once: true }来确保事件监听器只触发一次，然后自动移除*/
+            }, { once: true }); // 使用{ once: true }来确保事件监听器只触发一次，然后自动移除
 
             document.addEventListener('click', function (event) {
                 if (!colorPickerDialog.contains(event.target) && event.target !== button) {
@@ -162,4 +208,4 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
-});
+});*/

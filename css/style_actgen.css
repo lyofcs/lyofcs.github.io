@@ -6,7 +6,7 @@ body {
 }
 
 .container {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
     background-color: #fff;
     padding: 20px;
@@ -33,27 +33,65 @@ input, textarea {
 }
 
 .activity-list {
-    background-image: url("/img/sf6_back.png");
+    background-image: url("/img/poster_back.png");
     text-align: center;
-    padding-bottom: 100px;
+
+    width:1080px;
+    height: 2350px;
+    background-size: cover;
 }
 
 .activity-title {
+    text-shadow: 1px 1px 6px #000, -1px -1px 6px #000, 1px -1px 6px #000, -1px 1px 6px #000;
     display: block;
-    padding-top: 40px;
-    font-size: 3vw;
-    color: cornsilk;
+    padding-top: 125px;
+    padding-bottom: 40px;
+    font-size: 90px;
+    color: #fff;
 }
 
+.activity-content {
+    /*font-family: 'Microsoft YaHei';*/
+    color: black;
+    margin: 0 auto;
+    text-shadow: 0px 0px 5px #0000008c;
+    font-weight: 300;
+}
+
+.activity-name {
+    font-weight: 400;
+    font-size: 75px;
+}
+
+.activity-time {
+    font-size: 50px;
+}
+
+.activity-desc {
+    white-space: pre-wrap; /* ±£Áô¿Õ°×·ûºÍ»»ÐÐ·û */
+    word-wrap: break-word; /* ·ÀÖ¹³¤µ¥´ÊÒç³ö */
+    font-size: 40px;
+}
+
+
 .activity-card {
-    margin: 20px;
-    padding: 20px;
+    width: 80%;
+    height: 340px;
+    margin: auto;
+    margin-bottom: 25px;
+    padding-left: 20px;
     background-size: cover;
     background-position: center;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid #000;
+    opacity: 0.9;
+    box-shadow: 5px 0 20px rgba(0, 0, 0, 1);
+    /*box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);*/
     position: relative;
+    text-align: left;
 }
+
+
 
     .activity-card::after {
         content: '';
@@ -62,7 +100,7 @@ input, textarea {
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgba(0, 0, 0, 0.5);
+        
         pointer-events: none;
         border-radius: 10px;
     }
