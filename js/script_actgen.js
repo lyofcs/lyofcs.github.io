@@ -2,8 +2,8 @@
 const activityBackgrounds = [
     'url("/img/actcard1.png")', // 你可以替换成实际的图片URL
     'url("/img/actcard6.png")', // 你可以替换成实际的图片URL
-    'url("/img/actcard2.png")', // 你可以替换成实际的图片URL
     'url("/img/actcard5.png")', // 你可以替换成实际的图片URL
+    'url("/img/actcard2.png")', // 你可以替换成实际的图片URL
     'url("/img/actcard7.png")', // 你可以替换成实际的图片URL
     // ... 添加更多背景图片
 ];
