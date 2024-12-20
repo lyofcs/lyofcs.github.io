@@ -6,23 +6,42 @@
         throw new Error('Network response was not ok.');
     })
     .then(jsonData => {
-        jsonData[0].tournaments.forEach(function (tour) {
-            addAccordionPanel(tour);
-            checkQualify(tour);
-        });
 
-        for (const player of jsonData[0].members){
-            if (!banlist.includes(player.tfaName)) {
-                finalist[2].push(player.tfaName + "(暂)");
-                break;
-            }
-        };
+        fetch('/data/settings.json')
+            .then(response => {
+                if (response.ok) {
+                    return response.json(); // 将响应转换为JSON
+                }
+                throw new Error('Network response was not ok.');
+            })
+            .then(settingData => {
+                //console.log(settingData.qualifys[14310995]);
+                //settingData.qualifys[]
+                //const settingObject = JSON.parse(settingData.qualifys);
+                settings = settingData.qualifys;
 
-        var ft = document.getElementById('final');
-        var rows = ft.rows;
-        for (i = 1; i <= 4; i++) {
-            rows[i].cells[1].innerText = finalist[i-1];
-        }
+                jsonData[0].tournaments.reverse().forEach(function (tour) {
+                    addAccordionPanel(tour);
+                    checkQualify(tour);
+                });
+
+                for (const player of jsonData[0].members) {
+                    if (!banlist.includes(player.tfaName)) {
+                        finalist[2].push(player.tfaName + "(暂)");
+                        break;
+                    }
+                };
+
+                var ft = document.getElementById('final');
+                var rows = ft.rows;
+                for (i = 1; i <= 5; i++) {
+                    rows[i].cells[1].innerText = finalist[i - 1];
+                }
+
+
+            });
+
+
     })
     .catch(error => {
         console.error('There has been a problem with your fetch operation:', error);
@@ -37,8 +56,14 @@ let checks = [
     { text: "升龙杯", value: 1 }   // 如果都不包含，则默认值为 3
 ];
 
+let settings;
+
 let finalist = [
-    [],[],[],[]
+    [],//升龙杯
+    [],//月赛
+    [],//积分
+    ["（待定中）"],//LCQ
+    [],//月赛顺延
 ];
 let banlist = [];
 
@@ -63,7 +88,25 @@ function checkQualify(tour) {
         }
     };
     let name = '';
-    switch (type) {
+    let number = settings[tour.id].count;
+    let shunyan = settings[tour.id].extension;
+    for (let i = 1; i <= number; i++) {
+
+        FinalListPush(tour, i, type, shunyan);
+        /*name = getKeyByValue(tour.result, i);
+        if (!banlist.includes(name)) {
+            finalist[type-1].push(name);
+            banlist.push(name);
+        }
+        else if (shunyan) {
+            while (true) {
+                i++;
+                name = getKeyByValue(tour.result, i);
+            }
+        }*/
+    }
+
+    /*switch (type) {
         case 1:
             name = getKeyByValue(tour.result, 1);
             if (!banlist.includes(name)) {
@@ -87,10 +130,26 @@ function checkQualify(tour) {
             break;
         default:
             break;
-    }
+    }*/
 
 }
 
+function FinalListPush(tour,index,type,shunyan) {
+    let name = getKeyByValue(tour.result, index);
+    console.log(name);
+    console.log(banlist);
+    if (!banlist.includes(name)) {
+        console.log("432453 ：" + shunyan);
+        finalist[type - 1].push(name);
+        banlist.push(name);
+        return;
+    }
+    else if (shunyan) {
+        console.log("12312延：" + shunyan);
+        index++;
+        FinalListPush(tour, index, 5, shunyan);
+    }
+}
 
 
 

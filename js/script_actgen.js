@@ -54,7 +54,7 @@ function addActivity() {
     const b = Math.floor(Math.random() * 256);
     const randomColor = colorItems[activityIndex % activityBackgrounds.length];
 
-    activityTime.textContent = `时间: ${formData.get('activityTime')}`;
+    activityTime.textContent = `${formData.get('activityTime')}`;
     activityTime.style.color = randomColor;
 
     /*const activityLocation = document.createElement('p');
