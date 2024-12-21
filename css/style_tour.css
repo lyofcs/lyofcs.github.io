@@ -84,9 +84,9 @@ body {
 
 
 .final-table {
-    width: 100%;
+    width: 90%;
     border-collapse: collapse;
-    margin-top: 10px;
+    margin: 0 auto; /* 将表格水平居中 */
     text-shadow: 0 0 10px #99208d, 0 0 10px #99208d, 0 0 10px #99208d, 0 0 10px #99208d, 0 0 10px #99208d;
     white-space: normal;
 }
@@ -97,6 +97,7 @@ body {
         text-align: left;
         font-size: 16px;
         color: #fff; /* 浅灰色文字 */
+        text-align: center; /* 文本居中 */
     }
 
 

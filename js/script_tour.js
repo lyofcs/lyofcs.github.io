@@ -27,15 +27,28 @@
 
                 for (const player of jsonData[0].members) {
                     if (!banlist.includes(player.tfaName)) {
-                        finalist[2].push(player.tfaName + "(暂)");
+                        //finalist[2].push(player.tfaName + "(暂)");
+                        let beforeLCQ = "(暂定-LCQ后确定)"
+                        finalists.set(player.tfaName + beforeLCQ, ["积分榜最高积分（顺延）"]);
+                        finalists_index.set(12, player.tfaName + beforeLCQ);
+                        boolShunyan = false;
                         break;
                     }
+                    boolShunyan = true;
                 };
 
                 var ft = document.getElementById('final');
                 var rows = ft.rows;
-                for (i = 1; i <= 5; i++) {
-                    rows[i].cells[1].innerText = finalist[i - 1];
+                for (i = 1; i <= 12; i++) {
+                    console.log(finalists_index.get(i));
+                    if (finalists_index.has(i)) {
+                        let key = finalists_index.get(i);
+                        rows[i].cells[0].innerText = key;
+
+                        let arrayString = finalists.get(key).join('<br>');
+
+                        rows[i].cells[1].innerHTML = arrayString;
+                    }
                 }
 
 
@@ -65,6 +78,12 @@ let finalist = [
     ["（待定中）"],//LCQ
     [],//月赛顺延
 ];
+
+const finalists = new Map();
+const finalists_index = new Map();
+const final_count = 0; //入选数量
+let boolShunyan = false;
+
 let banlist = [];
 
 let panelCount = 0; // 用于生成唯一的收纳板ID
@@ -90,62 +109,71 @@ function checkQualify(tour) {
     let name = '';
     let number = settings[tour.id].count;
     let shunyan = settings[tour.id].extension;
+    boolShunyan = false;
     for (let i = 1; i <= number; i++) {
-
-        FinalListPush(tour, i, type, shunyan);
-        /*name = getKeyByValue(tour.result, i);
-        if (!banlist.includes(name)) {
-            finalist[type-1].push(name);
-            banlist.push(name);
-        }
-        else if (shunyan) {
-            while (true) {
-                i++;
-                name = getKeyByValue(tour.result, i);
-            }
-        }*/
+        FinalListsPush(tour, i, type, shunyan);
     }
+}
 
-    /*switch (type) {
+function FinalListsPush(tour, index, type, shunyan) {
+    let name = getKeyByValue(tour.result, index);
+    let honor;
+    switch (index) {
         case 1:
-            name = getKeyByValue(tour.result, 1);
-            if (!banlist.includes(name)) {
-                finalist[0].push(name);
-                banlist.push(name);
-            }
-            name = getKeyByValue(tour.result, 2);
-            if (!banlist.includes(name)) {
-                finalist[0].push(name);
-                banlist.push(name);
-            }
+            honor = " 冠军";
             break;
         case 2:
-            name = getKeyByValue(tour.result, 1);
-            if (!banlist.includes(name)) {
-                finalist[1].push(name);
-                banlist.push(name);
-            }
+            honor = " 亚军";
             break;
         case 3:
+            honor = " 季军";
             break;
         default:
+            honor = " 第" + index + "名";
             break;
-    }*/
+    }
 
+    let number = settings[tour.id].count;
+    let suffix = "";
+    if (index > number) {
+        boolShunyan = true;
+        suffix = "（顺延）"
+    }
+
+    if (!banlist.includes(name)) {
+        finalists.set(name, [tour.desc + honor + suffix]);
+        finalists_index.set(finalists.size, name);
+        banlist.push(name);
+        return;
+    }
+    else {
+        if (!boolShunyan) {
+            finalists.get(name).push(tour.desc + honor);
+        }
+        if (shunyan) {
+            index++;
+            FinalListsPush(tour, index, 5, shunyan);
+        }
+    }
 }
+
+
+function addPlayer(playerId, iniscore) {
+    finalists.push({
+        id: playerId,
+        scores: iniscore
+    });
+}
+
 
 function FinalListPush(tour,index,type,shunyan) {
     let name = getKeyByValue(tour.result, index);
-    console.log(name);
-    console.log(banlist);
     if (!banlist.includes(name)) {
-        console.log("432453 ：" + shunyan);
         finalist[type - 1].push(name);
         banlist.push(name);
         return;
     }
     else if (shunyan) {
-        console.log("12312延：" + shunyan);
         index++;
         FinalListPush(tour, index, 5, shunyan);
     }
@@ -205,7 +233,6 @@ function createAccordionPanel(tour) {
     const map = new Map(Object.entries(result));
 
     let sortedMap = new Map([...map.entries()].sort((a, b) => a[1] - b[1]));
-    console.log(sortedMap);
 
     for (const [key, value] of sortedMap) {
         var row = tbody.insertRow(-1);

@@ -3,68 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Change Font Color</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        /* styles.css */
-        body {
-            font-family: Arial, sans-serif;
-        }
-
-        #colorPicker {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            padding: 20px;
-            background-color: white;
-            border: 1px solid #ccc;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .hidden {
-            display: none;
-        }
-    </style>
+    <title>Player Scores</title>
+    <link rel="stylesheet" href="/css/test_css.css">
 </head>
 <body>
-    <div id="content">
-        <p id="text">This is some text that you can change the color of.</p>
-        <button id="colorPickerButton">Change Color</button>
+    <div class="grid-container">
+        <!-- Example Modules, replace with actual data -->
+        <div class="module" data-id="Player1" data-scores="[100, 200, 300]">
+            <!-- Placeholder for dynamic content -->
+        </div>
+        <div class="module" data-id="ShortID" data-scores="[50, 150]">
+            <!-- Placeholder for dynamic content -->
+        </div>
+        <!-- Add more modules as needed -->
+        <!-- Repeat for 12 modules total -->
     </div>
-    <div id="colorPicker" class="hidden">
-        <input type="color" id="colorInput" value="#000000">
-        <label for="fontSizeInput">Font Size:</label>
-        <input type="number" id="fontSizeInput" value="16" min="8" max="72">
-        <button id="applyColorButton">Apply</button>
-    </div>
-    <script src="script.js"></script>
-    <script>
-        // script.js
-        document.addEventListener('DOMContentLoaded', function () {
-            const colorPickerButton = document.getElementById('colorPickerButton');
-            const colorPicker = document.getElementById('colorPicker');
-            const colorInput = document.getElementById('colorInput');
-            const applyColorButton = document.getElementById('applyColorButton');
-            const text = document.getElementById('text');
 
-            colorPickerButton.addEventListener('click', function () {
-                colorPicker.classList.remove('hidden');
-            });
-
-            applyColorButton.addEventListener('click', function () {
-                const selectedColor = colorInput.value;
-                text.style.color = selectedColor;
-                colorPicker.classList.add('hidden');
-            });
-
-            // Optionally, you can add a click event outside the color picker to hide it
-            document.addEventListener('click', function (event) {
-                if (!colorPicker.contains(event.target) && event.target !== colorPickerButton) {
-                    colorPicker.classList.add('hidden');
-                }
-            });
-        });
-    </script>
+    <script src="/js/script_test.js"></script>
 </body>
 </html>
