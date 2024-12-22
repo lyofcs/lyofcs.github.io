@@ -28,7 +28,7 @@
                 for (const player of jsonData[0].members) {
                     if (!banlist.includes(player.tfaName)) {
                         //finalist[2].push(player.tfaName + "(暂)");
-                        let beforeLCQ = "(暂定-LCQ后确定)"
+                        let beforeLCQ = ""
                         finalists.set(player.tfaName + beforeLCQ, ["积分榜最高积分（顺延）"]);
                         finalists_index.set(12, player.tfaName + beforeLCQ);
                         boolShunyan = false;
