@@ -1,14 +1,13 @@
 ﻿//从域名后缀获取当前rank
 function getQueryParam(param) {
     var searchParams = new URLSearchParams(window.location.search);
+    console.log(param);
     /*searchParams = Math.min(0, Number(searchParams));*/
     var a = searchParams.get(param);
-    console.log('searchParams:' + searchParams + " A");
-    if (a == '') {
+    if (a == null) {
         a = 0;
     }
-    console.log('searchParams:' + a + " B");
-    return searchParams.get(param);
+    return a;
 }
 
 //数据反向检索
@@ -40,6 +39,7 @@ function dataUpdate() {
 
 var data;
 var rank = getQueryParam('rank') - 1; // 获取rank参数
+var season = getQueryParam('season') ; // 获取rank参数
 
 //获取页面布局元素id
 var headName = document.getElementById('name');
@@ -60,7 +60,10 @@ document.addEventListener('DOMContentLoaded', function () {
             throw new Error('Network response was not ok.');
         })
         .then(jsonData => {
-            data = jsonData[0];
+            console.log("数据长度:" + jsonData.length);
+            season = 2023 + jsonData.length - season;
+            season = Math.min(Math.max(0, season), jsonData.length - 1)
+            data = jsonData[season];
 
             rank = Math.min(Math.max(0, rank), data.members.length - 1);
 
@@ -331,7 +334,5 @@ console.log(jsonData.members[rank].historyMMR);*/
 //console.log(data.members[rank].tfaName);
 
 //console.log(data.members[rank].historyMMR);
-
-console.log(rank);
 
 //var tourTable = document.querySelector('#rankings > tbody');

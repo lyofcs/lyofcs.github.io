@@ -1,8 +1,8 @@
 ﻿let activityIndex = 0;
 const activityBackgrounds = [
     'url("/img/actcard1.png")', // 你可以替换成实际的图片URL
-    'url("/img/actcard6.png")', // 你可以替换成实际的图片URL
     'url("/img/actcard5.png")', // 你可以替换成实际的图片URL
+    'url("/img/actcard6.png")', // 你可以替换成实际的图片URL
     'url("/img/actcard2.png")', // 你可以替换成实际的图片URL
     'url("/img/actcard7.png")', // 你可以替换成实际的图片URL
     // ... 添加更多背景图片
@@ -81,6 +81,9 @@ function addActivity() {
     form.reset();
 
     activityIndex++;
+
+
+    
 }
 
 /*document.getElementById('downloadBtn').addEventListener('click', function () {

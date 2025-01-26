@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabs with Season Switch</title>
+    <style>
+        /* 样式定义 */
+        .tab-container {
+            display: flex;
+        }
+
+        .tab, .dropdown-tab {
+            padding: 10px;
+            margin: 5px;
+            text-decoration: none;
+            color: black;
+            cursor: pointer;
+        }
+
+        .dropdown {
+            display: none; /* 初始状态隐藏下拉列表 */
+            position: absolute;
+            background-color: white;
+            border: 1px solid #ccc;
+            z-index: 1;
+        }
+
+        .dropdown-item {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+            .dropdown-item:hover {
+                background-color: #f1f1f1;
+            }
+        /* .dropdown-tab在悬浮时显示下拉列表 */
+        .dropdown-tab:hover .dropdown {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="tab-container">
+        <!-- 前三个tab -->
+        <a href="/index.html" class="tab" data-tab="tab1">积分榜</a>
+        <a href="/detail.html" class="tab" data-tab="tab2">详细信息</a>
+        <a href="/tournaments.html" class="tab" data-tab="tab3">赛事信息</a>
+        <!-- 第四个tab，包含下拉列表 -->
+        <div class="dropdown-tab" data-tab="tab4">
+            赛季切换
+            <div class="dropdown">
+                <a href="#" class="dropdown-item" data-season="">当前赛季</a>
+                <a href="#" class="dropdown-item" data-season="2024">2024赛季</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const currentUrl = new URL(window.location.href);
+            const seasonParam = currentUrl.searchParams.get('season'); // 获取当前URL中的season参数
+
+            const tabs = document.querySelectorAll('.tab');
+            const dropdownItems = document.querySelectorAll('.dropdown-item');
+
+            // 为前三个tab添加点击事件
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function (event) {
+                    event.preventDefault(); // 阻止默认跳转行为
+                    let targetUrl = tab.href;
+                    if (seasonParam) {
+                        // 如果存在season参数，则添加到targetUrl中
+                        const urlParams = new URLSearchParams(targetUrl.includes('?') ? targetUrl.split('?')[1] : '');
+                        urlParams.append('season', seasonParam);
+                        targetUrl = `${targetUrl.split('?')[0]}?${urlParams.toString()}`;
+                    }
+                    window.location.href = targetUrl; // 跳转到带有season参数的URL
+                });
+            });
+
+            // 为下拉列表中的项添加点击事件
+            dropdownItems.forEach(item => {
+                item.addEventListener('click', function (event) {
+                    event.preventDefault(); // 阻止默认行为
+                    const targetSeason = item.getAttribute('data-season');
+                    if (targetSeason !== seasonParam) {
+                        // 如果点击的赛季与当前赛季不同，则更新URL
+                        const newUrl = new URL(window.location.href);
+                        newUrl.searchParams.set('season', targetSeason || ''); // 设置season参数，如果为空则移除
+                        window.history.pushState({}, '', newUrl); // 更新浏览器历史记录而不重新加载页面
+                        // 在这里可以添加额外的逻辑来处理赛季切换，比如更新页面内容
+                    }
+                    // 隐藏下拉列表（如果需要的话，可以通过CSS的:hover伪类或其他JavaScript逻辑来实现）
+                    // 在这个例子中，我们使用了CSS的:hover伪类和.dropdown-tab:hover .dropdown选择器来自动处理下拉列表的显示和隐藏
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

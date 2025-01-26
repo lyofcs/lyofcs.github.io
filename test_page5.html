@@ -1,24 +1,142 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Player Scores</title>
-    <link rel="stylesheet" href="/css/test_css.css">
+    <title>天格会积分排行榜</title>
 </head>
 <body>
-    <div class="grid-container">
-        <!-- Example Modules, replace with actual data -->
-        <div class="module" data-id="Player1" data-scores="[100, 200, 300]">
-            <!-- Placeholder for dynamic content -->
+    <div class="tab-section">
+        <div class="tab-container">
+            <a href="/index.html" class="tab" data-tab="tab1" onclick="return navigateWithQuery(this, event)">积分榜</a>
+            <a href="/detail.html" class="tab" data-tab="tab2" onclick="return navigateWithQuery(this, event)">详细信息</a>
+            <a href="/tournaments.html" class="tab" data-tab="tab3" onclick="return navigateWithQuery(this, event)">赛事信息</a>
+            <div class="tab dropdown-tab" data-tab="tab4" onclick="toggleDropdown(event)">
+                赛季切换 <i class="caret">&#9660;</i>
+                <div class="dropdown-content">
+                    <a href="#" class="dropdown-item" onclick="updateQuery(this, 'season=current')">当前赛季</a>
+                    <a href="#" class="dropdown-item" onclick="updateQuery(this, 'season=2024')">2024赛季</a>
+                </div>
+            </div>
         </div>
-        <div class="module" data-id="ShortID" data-scores="[50, 150]">
-            <!-- Placeholder for dynamic content -->
-        </div>
-        <!-- Add more modules as needed -->
-        <!-- Repeat for 12 modules total -->
     </div>
 
-    <script src="/js/script_test.js"></script>
+    <style>
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            .dropdown-content.show {
+                display: block;
+            }
+
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+                .dropdown-content a:hover {
+                    background-color: #f1f1f1
+                }
+    </style>
+
+    <script>
+        function navigateWithQuery(link, event) {
+            // 阻止链接的默认跳转行为
+            event.preventDefault();
+
+            var link2 = event.target.href;
+
+            console.log("link:"+link2);
+
+            // 获取当前URL的查询字符串
+            var queryString = window.location.search;
+
+            var searchParams = new URLSearchParams(window.location.search);
+            var season = searchParams.get("season");
+            console.log("season:" + season);
+
+            // 如果查询字符串不为空，则将其添加到链接的href属性中
+            if (season) {
+                //link.href += (link.href.includes('?') ? '&' : '?') + queryString;
+                link.href += "?season=" + season;
+            }
+
+            // 执行跳转
+            window.location.href = link.href;
+
+            // 由于我们已经处理了跳转，所以返回false来阻止其他可能的事件处理器
+            return false;
+        }
+
+        function toggleDropdown(event) {
+            // 阻止事件冒泡到父元素
+            event.stopPropagation();
+
+            // 获取下拉内容元素
+            var dropdownContent = event.currentTarget.querySelector('.dropdown-content');
+
+            // 切换下拉内容的显示状态
+            dropdownContent.classList.toggle('show');
+
+            // 为了在点击下拉列表项之外的地方时隐藏下拉内容，我们可以添加一个点击事件监听器到document上
+            // 但在这里为了简化，我们省略了这个步骤，并假设用户会正确点击下拉列表项来关闭菜单
+        }
+
+        function updateQuery(item, newQuery) {
+            // 获取当前URL的路径和现有的查询字符串（如果有的话）
+            var currentPath = window.location.pathname;
+            var currentQuery = window.location.search.slice(1); // 去掉开头的'?'
+
+            // 解析现有的查询字符串为一个对象
+            var queryParams = {};
+            if (currentQuery) {
+                currentQuery.split('&').forEach(function (param) {
+                    var [key, value] = param.split('=');
+                    queryParams[decodeURIComponent(key)] = decodeURIComponent(value);
+                });
+            }
+
+            // 更新或添加新的查询参数
+            Object.assign(queryParams, parseQueryString(newQuery));
+
+            // 构建新的查询字符串
+            var newQueryString = Object.keys(queryParams).map(function (key) {
+                return encodeURIComponent(key) + '=' + encodeURIComponent(queryParams[key]);
+            }).join('&');
+
+            // 更新当前页面的URL
+            window.history.pushState({}, '', currentPath + '?' + newQueryString);
+
+            // 可选：触发页面内容更新，这取决于您的页面是如何处理查询参数变化的
+            // updatePageContent(queryParams);
+
+            // 隐藏下拉内容（如果需要的话）
+            var dropdownContent = item.closest('.dropdown-tab').querySelector('.dropdown-content');
+            if (dropdownContent.classList.contains('show')) {
+                dropdownContent.classList.remove('show');
+            }
+
+            // 阻止链接的默认行为（因为我们已经更新了URL）
+            return false;
+        }
+
+        // 辅助函数：解析查询字符串为一个对象
+        function parseQueryString(queryString) {
+            var params = {};
+            queryString.split('&').forEach(function (param) {
+                var [key, value] = param.split('=');
+                params[key] = value;
+            });
+            return params;
+        }
+    </script>
 </body>
 </html>

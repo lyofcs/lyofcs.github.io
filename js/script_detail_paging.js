@@ -16,8 +16,25 @@
 
     // 更新当前页码显示  
     function updateCurrentPage() {
-        // 更新URL锚点  
-        window.location.href = 'detail.html?rank=' + currentPage;
+        // 更新URL锚点
+        //window.location.href = 'detail.html?rank=' + currentPage;
+        // 获取当前URL
+        var currentUrl = new URL(window.location.href);
+        console.log("CU:" + currentUrl);
+
+        // 解析查询参数
+        var queryParams = new URLSearchParams(currentUrl.search);
+        console.log("QP:" + queryParams);
+        var param = queryParams.get('rank');
+        console.log("P:" + param);
+        // 更新rank参数
+        queryParams.set('rank', currentPage);
+        console.log("QP:" + queryParams.toString());
+        // 构建新的URL（保留season参数和其他可能的参数）
+        var newUrl = currentUrl.origin + currentUrl.pathname + '?' + queryParams.toString();
+        console.log("NU:" + newUrl);
+        // 跳转到新URL
+        window.location.href = newUrl;
     }
 
     // 上一页按钮点击事件  
@@ -33,6 +50,7 @@
     prevPageButton.addEventListener('click', () => {
         if (currentPage > 1) {
             currentPage--;
+            console.log("CP:" + currentPage);
             updateCurrentPage();
         }
     });
@@ -40,7 +58,9 @@
 
     // 下一页按钮点击事件  
     nextPageButton.addEventListener('click', () => {
+        console.log("CP:" + currentPage);
         currentPage++;
+        console.log("CP:" + currentPage);
         updateCurrentPage();
     });
 
@@ -55,16 +75,20 @@
         }
     });
 
-    // 页面加载时，如果URL中有锚点，则解析并显示对应的页码  
-    const search = window.location.search;
-    if (search && search.startsWith('?rank=')) {
+    // 页面加载时，如果URL中有锚点，则解析并显示对应的页码
+    //const search = window.location.search;
+    var searchParams = new URLSearchParams(window.location.search);
 
-        const searchPage = search.slice(6);
+    var currentRank = searchParams.get('rank');
+    console.log("CRRR:" + currentRank);
 
-        if (!isNaN(searchPage) && searchPage > 0) {
-            currentPage = searchPage;
-            gotoPageInput.placeholder = currentPage;  
-        }
+    
+    if (currentRank !== null) {
+        currentPage = currentRank;
+        gotoPageInput.placeholder = currentPage;
+    }
+    else {
+        currentPage = 1;
     }
 
     updateUI();
