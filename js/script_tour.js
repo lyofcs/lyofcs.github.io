@@ -21,6 +21,7 @@
                 settings = settingData.qualifys;
 
                 jsonData[globalSeason].tournaments.reverse().forEach(function (tour) {
+                    console.log(tour);
                     addAccordionPanel(tour);
                     checkQualify(tour);
                 });
