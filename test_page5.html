@@ -14,8 +14,8 @@
             <div class="tab dropdown-tab" data-tab="tab4" onclick="toggleDropdown(event)">
                 赛季切换 <i class="caret">&#9660;</i>
                 <div class="dropdown-content">
-                    <a href="#" class="dropdown-item" onclick="updateQuery(this, 'season=current')">当前赛季</a>
-                    <a href="#" class="dropdown-item" onclick="updateQuery(this, 'season=2024')">2024赛季</a>
+                    <a href="#" class="dropdown-item" onclick="updateQuery(this, 'globalSeason=current')">当前赛季</a>
+                    <a href="#" class="dropdown-item" onclick="updateQuery(this, 'globalSeason=2024')">2024赛季</a>
                 </div>
             </div>
         </div>
@@ -60,13 +60,13 @@
             var queryString = window.location.search;
 
             var searchParams = new URLSearchParams(window.location.search);
-            var season = searchParams.get("season");
-            console.log("season:" + season);
+            var season = searchParams.get("globalSeason");
+            console.log("globalSeason:" + season);
 
             // 如果查询字符串不为空，则将其添加到链接的href属性中
             if (season) {
                 //link.href += (link.href.includes('?') ? '&' : '?') + queryString;
-                link.href += "?season=" + season;
+                link.href += "?globalSeason=" + season;
             }
 
             // 执行跳转

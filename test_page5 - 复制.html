@@ -1,103 +1,128 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabs with Season Switch</title>
-    <style>
-        /* 样式定义 */
-        .tab-container {
-            display: flex;
-        }
-
-        .tab, .dropdown-tab {
-            padding: 10px;
-            margin: 5px;
-            text-decoration: none;
-            color: black;
-            cursor: pointer;
-        }
-
-        .dropdown {
-            display: none; /* 初始状态隐藏下拉列表 */
-            position: absolute;
-            background-color: white;
-            border: 1px solid #ccc;
-            z-index: 1;
-        }
-
-        .dropdown-item {
-            padding: 10px;
-            cursor: pointer;
-        }
-
-            .dropdown-item:hover {
-                background-color: #f1f1f1;
-            }
-        /* .dropdown-tab在悬浮时显示下拉列表 */
-        .dropdown-tab:hover .dropdown {
-            display: block;
-        }
-    </style>
+    <title>赛季切换功能</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
     <div class="tab-container">
-        <!-- 前三个tab -->
-        <a href="/index.html" class="tab" data-tab="tab1">积分榜</a>
-        <a href="/detail.html" class="tab" data-tab="tab2">详细信息</a>
-        <a href="/tournaments.html" class="tab" data-tab="tab3">赛事信息</a>
-        <!-- 第四个tab，包含下拉列表 -->
-        <div class="dropdown-tab" data-tab="tab4">
-            赛季切换
-            <div class="dropdown">
-                <a href="#" class="dropdown-item" data-season="">当前赛季</a>
-                <a href="#" class="dropdown-item" data-season="2024">2024赛季</a>
+        <a href="page1.html?season=current" class="tab">Tab 1</a>
+        <a href="page2.html?season=current" class="tab">Tab 2</a>
+        <a href="page3.html?season=current" class="tab">Tab 3</a>
+        <div class="dropdown">
+            <button class="dropbtn">选择赛季</button>
+            <div class="dropdown-content">
+                <a href="#" data-season="season1">赛季 1</a>
+                <a href="#" data-season="season2">赛季 2</a>
+                <a href="#" data-season="season3">赛季 3</a>
             </div>
         </div>
     </div>
 
     <script>
+        // script.js
         document.addEventListener('DOMContentLoaded', function () {
-            const currentUrl = new URL(window.location.href);
-            const seasonParam = currentUrl.searchParams.get('season'); // 获取当前URL中的season参数
+            let currentSeason = 'current'; // 默认赛季
 
-            const tabs = document.querySelectorAll('.tab');
-            const dropdownItems = document.querySelectorAll('.dropdown-item');
+            // 获取所有赛季选项
+            const dropdownItems = document.querySelectorAll('.dropdown-content a');
+            // 获取所有前三个链接
+            const tabLinks = document.querySelectorAll('.tab[data-target]');
 
-            // 为前三个tab添加点击事件
-            tabs.forEach(tab => {
-                tab.addEventListener('click', function (event) {
-                    event.preventDefault(); // 阻止默认跳转行为
-                    let targetUrl = tab.href;
-                    if (seasonParam) {
-                        // 如果存在season参数，则添加到targetUrl中
-                        const urlParams = new URLSearchParams(targetUrl.includes('?') ? targetUrl.split('?')[1] : '');
-                        urlParams.append('season', seasonParam);
-                        targetUrl = `${targetUrl.split('?')[0]}?${urlParams.toString()}`;
-                    }
-                    window.location.href = targetUrl; // 跳转到带有season参数的URL
-                });
-            });
-
-            // 为下拉列表中的项添加点击事件
+            // 监听赛季选项的点击事件
             dropdownItems.forEach(item => {
                 item.addEventListener('click', function (event) {
-                    event.preventDefault(); // 阻止默认行为
-                    const targetSeason = item.getAttribute('data-season');
-                    if (targetSeason !== seasonParam) {
-                        // 如果点击的赛季与当前赛季不同，则更新URL
-                        const newUrl = new URL(window.location.href);
-                        newUrl.searchParams.set('season', targetSeason || ''); // 设置season参数，如果为空则移除
-                        window.history.pushState({}, '', newUrl); // 更新浏览器历史记录而不重新加载页面
-                        // 在这里可以添加额外的逻辑来处理赛季切换，比如更新页面内容
-                    }
-                    // 隐藏下拉列表（如果需要的话，可以通过CSS的:hover伪类或其他JavaScript逻辑来实现）
-                    // 在这个例子中，我们使用了CSS的:hover伪类和.dropdown-tab:hover .dropdown选择器来自动处理下拉列表的显示和隐藏
+                    event.preventDefault(); // 阻止默认跳转行为
+                    currentSeason = this.getAttribute('data-season'); // 更新当前赛季
+                    console.log(`切换到赛季: ${currentSeason}`); // 调试信息
+                    updateSeason(currentSeason); // 更新页面内容（如果需要）
                 });
             });
+
+            // 监听前三个链接的点击事件
+            tabLinks.forEach(link => {
+                link.addEventListener('click', function (event) {
+                    event.preventDefault(); // 阻止默认跳转行为
+                    const targetPage = this.getAttribute('data-target'); // 获取目标页面
+                    const newUrl = `${targetPage}.html?season=${currentSeason}`; // 构建新URL
+                    console.log(`跳转到: ${newUrl}`); // 调试信息
+                    window.location.href = newUrl; // 跳转到目标页面
+                });
+            });
+
+            // 更新赛季信息（可选）
+            function updateSeason(season) {
+                console.log(`当前赛季已切换为: ${season}`);
+                // 这里可以添加代码来根据新的赛季信息更新页面内容
+            }
         });
     </script>
 
+    <style>
+        /* styles.css */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .tab-container {
+            display: flex;
+            justify-content: flex-start;
+            background-color: #f1f1f1;
+            padding: 10px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            text-decoration: none;
+            color: black;
+            background-color: #ddd;
+            margin-right: 5px;
+            border: 1px solid #ccc;
+        }
+
+            .tab:hover {
+                background-color: #ccc;
+            }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropbtn {
+            padding: 10px 20px;
+            background-color: #ddd;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+                .dropdown-content a:hover {
+                    background-color: #f1f1f1;
+                }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
+
+    <script src="script.js"></script>
 </body>
 </html>
